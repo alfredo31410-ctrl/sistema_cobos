@@ -1,3 +1,5 @@
+import { ArrowRight } from 'lucide-react';
+
 const steps = [
   {
     number: '01',
@@ -18,29 +20,38 @@ const steps = [
 
 export default function ProcessSteps() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-      {steps.map((step, index) => (
-        <div key={index} className="relative">
-          {/* Connector Line */}
-          {index < steps.length - 1 && (
-            <div className="hidden lg:block absolute top-8 left-[60%] w-full h-[2px] bg-neutral-200" />
-          )}
-          
-          <div className="relative z-10">
-            <div className="flex items-center mb-4">
-              <span className="text-5xl lg:text-6xl font-bold text-cefin-red/20">
-                {step.number}
-              </span>
+    <div className="relative">
+      {/* Connection Line - Desktop */}
+      <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neutral-200 to-transparent -translate-y-1/2" />
+      
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6">
+        {steps.map((step, index) => (
+          <div key={index} className="relative group">
+            {/* Card */}
+            <div className="relative bg-white rounded-3xl p-8 lg:p-10 shadow-elevated border border-neutral-100 hover:shadow-elevated-lg transition-all duration-500 hover:-translate-y-1">
+              {/* Step Number */}
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cefin-red to-cefin-red-dark flex items-center justify-center shadow-lg shadow-cefin-red/20">
+                  <span className="text-2xl font-bold text-white">
+                    {step.number}
+                  </span>
+                </div>
+                {index < steps.length - 1 && (
+                  <ArrowRight className="hidden lg:block w-6 h-6 text-neutral-300 absolute -right-3 top-1/2 -translate-y-1/2 z-10" />
+                )}
+              </div>
+              
+              {/* Content */}
+              <h3 className="text-2xl lg:text-3xl font-bold text-neutral-900 mb-4">
+                {step.title}
+              </h3>
+              <p className="text-neutral-500 text-lg leading-relaxed">
+                {step.description}
+              </p>
             </div>
-            <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-3">
-              {step.title}
-            </h3>
-            <p className="text-neutral-600 leading-relaxed">
-              {step.description}
-            </p>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
