@@ -46,7 +46,7 @@ export default function SobreMiPage() {
                 <div className="absolute inset-0 bg-cefin-red/10 rounded-3xl transform rotate-3" />
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1508243529287-e21914733111?w=800&h=1000&fit=crop"
+                    src="/images/realidad.png"
                     alt="Alfredo Cobos"
                     width={800}
                     height={1000}
@@ -208,7 +208,7 @@ export default function SobreMiPage() {
                 <div className="absolute inset-0 bg-cefin-red/10 rounded-3xl transform -rotate-3" />
                 <div className="relative rounded-3xl overflow-hidden shadow-xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?w=800&h=800&fit=crop"
+                    src="/images/enseñando.png"
                     alt="Alfredo Cobos enseñando"
                     width={800}
                     height={800}

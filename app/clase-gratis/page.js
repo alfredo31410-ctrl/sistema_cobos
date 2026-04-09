@@ -168,7 +168,7 @@ export default function ClaseGratisPage() {
                 <div className="absolute -inset-4 bg-gradient-to-br from-cefin-red/10 to-transparent rounded-[2rem] transform -rotate-3" />
                 <div className="relative rounded-[1.5rem] overflow-hidden shadow-2xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=800&fit=crop"
+                    src="/images/sentado.png"
                     alt="Alfredo Cobos"
                     width={800}
                     height={800}

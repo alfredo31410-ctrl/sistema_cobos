@@ -11,10 +11,9 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Youtube, href: '#', label: 'YouTube' },
-  { icon: Facebook, href: '#', label: 'Facebook' },
+  { icon: Instagram, href: 'https://www.instagram.com/alfredocobosmx/', label: 'Instagram' },
+  { icon: Youtube, href: 'https://www.youtube.com/channel/UCcVhSDZCYZBqDyskJia8dOA', label: 'YouTube' },
+  { icon: Facebook, href: 'https://www.facebook.com/alfredo.cobos.5/?locale=es_LA', label: 'Facebook' },
 ];
 
 export default function Footer() {

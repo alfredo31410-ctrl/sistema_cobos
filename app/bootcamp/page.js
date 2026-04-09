@@ -285,7 +285,7 @@ export default function BootcampPage() {
                 <div className="absolute inset-0 bg-cefin-red/10 rounded-3xl transform -rotate-3" />
                 <div className="relative rounded-3xl overflow-hidden shadow-xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=800&fit=crop"
+                    src="/images/sentado.png"
                     alt="Alfredo Cobos"
                     width={800}
                     height={800}

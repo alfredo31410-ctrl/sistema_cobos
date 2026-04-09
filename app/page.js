@@ -111,13 +111,13 @@ export default function HomePage() {
                   {/* Image */}
                   <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-neutral-900/20">
                     <Image
-                      src="https://images.unsplash.com/photo-1508835277982-1c1b0e205603?w=800&h=1000&fit=crop"
-                      alt="Alfredo Cobos"
-                      width={800}
-                      height={1000}
-                      className="object-cover"
-                      priority
-                    />
+  src="/images/alfredo-hero.png"
+  alt="Alfredo Cobos"
+  width={800}
+  height={1000}
+  className="object-cover"
+  priority
+/>
                     {/* Overlay Gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/30 via-transparent to-transparent" />
                   </div>
@@ -258,12 +258,12 @@ export default function HomePage() {
                 {/* Image */}
                 <div className="relative rounded-[1.5rem] overflow-hidden shadow-2xl">
                   <Image
-                    src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=800&fit=crop"
-                    alt="Alfredo Cobos"
-                    width={800}
-                    height={800}
-                    className="object-cover"
-                  />
+  src="/images/alfredo-placa.png"
+  alt="Alfredo Cobos"
+  width={800}
+  height={800}
+  className="object-cover"
+/>
                 </div>
               </div>
             </div>
