@@ -111,7 +111,7 @@ export default function HomePage() {
                   {/* Image */}
                   <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-neutral-900/20">
                     <Image
-  src="/images/alfredo-hero.png"
+  src="/images/alfredo-placa.jpg"
   alt="Alfredo Cobos"
   width={800}
   height={1000}
@@ -258,7 +258,7 @@ export default function HomePage() {
                 {/* Image */}
                 <div className="relative rounded-[1.5rem] overflow-hidden shadow-2xl">
                   <Image
-  src="/images/alfredo-placa.png"
+  src="/images/alfredo-hero.png"
   alt="Alfredo Cobos"
   width={800}
   height={800}
