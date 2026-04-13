@@ -11,6 +11,7 @@ const navLinks = [
   { href: '/sobre-mi', label: 'Sobre mí' },
   { href: '/clase-gratis', label: 'Clase gratis' },
   { href: '/bootcamp', label: 'Bootcamp' },
+  { href: '/diagnostico', label: 'Diagnóstico' },
   { href: '/sistema-cobos', label: 'Sistema Cobos' },
   { href: '/agencia', label: 'Agencia' },
 ];
@@ -60,16 +61,16 @@ export default function Navbar() {
       <nav
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'bg-white/92 backdrop-blur-xl border-b border-neutral-200/70 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.18)]'
-            : 'bg-white/75 backdrop-blur-md border-b border-transparent'
+            ? 'border-b border-neutral-200/70 bg-white/92 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.18)] backdrop-blur-xl'
+            : 'border-b border-transparent bg-white/75 backdrop-blur-md'
         }`}
       >
         <div className="page-container">
-          <div className="flex h-16 sm:h-18 lg:h-20 items-center justify-between gap-4">
+          <div className="flex h-16 lg:h-20 items-center justify-between gap-4">
             {/* Logo */}
             <Link
               href="/"
-              className="shrink-0 text-lg sm:text-xl lg:text-2xl font-bold tracking-tight text-neutral-900"
+              className="shrink-0 text-lg font-bold tracking-tight text-neutral-900 sm:text-xl lg:text-2xl"
               aria-label="Ir al inicio"
             >
               Alfredo <span className="text-cefin-red">Cobos</span>
@@ -84,7 +85,7 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`rounded-full px-4 xl:px-5 py-2 text-sm font-medium transition-all duration-200 ${
+                    className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 xl:px-5 ${
                       active
                         ? 'bg-neutral-900 text-white'
                         : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900'
@@ -99,7 +100,7 @@ export default function Navbar() {
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center">
               <Link href="/clase-gratis">
-                <Button className="h-11 rounded-full bg-cefin-red px-5 xl:px-6 text-sm font-semibold text-white shadow-lg shadow-cefin-red/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-cefin-red-dark hover:shadow-xl hover:shadow-cefin-red/25">
+                <Button className="h-11 rounded-full bg-cefin-red px-5 text-sm font-semibold text-white shadow-lg shadow-cefin-red/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-cefin-red-dark hover:shadow-xl hover:shadow-cefin-red/25 xl:px-6">
                   Quiero registrarme
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -109,24 +110,28 @@ export default function Navbar() {
             {/* Mobile button */}
             <button
               type="button"
-              className="inline-flex lg:hidden h-11 w-11 items-center justify-center rounded-full border border-neutral-200 bg-white text-neutral-900 transition hover:bg-neutral-50"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 bg-white text-neutral-900 transition hover:bg-neutral-50 lg:hidden"
               onClick={() => setIsOpen((prev) => !prev)}
               aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
             >
-              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Spacer para compensar navbar fixed */}
-      <div className="h-16 sm:h-18 lg:h-20" />
+      {/* Spacer */}
+      <div className="h-16 lg:h-20" />
 
       {/* Mobile overlay */}
       <div
-        className={`lg:hidden fixed inset-0 z-40 bg-black/30 transition-opacity duration-300 ${
+        className={`fixed inset-0 z-40 bg-black/30 transition-opacity duration-300 lg:hidden ${
           isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
         onClick={() => setIsOpen(false)}
@@ -136,7 +141,7 @@ export default function Navbar() {
       {/* Mobile panel */}
       <div
         id="mobile-menu"
-        className={`lg:hidden fixed top-16 sm:top-18 left-0 right-0 z-50 border-t border-neutral-200 bg-white shadow-2xl transition-all duration-300 ${
+        className={`fixed left-0 right-0 top-16 z-50 border-t border-neutral-200 bg-white shadow-2xl transition-all duration-300 lg:hidden ${
           isOpen
             ? 'translate-y-0 opacity-100'
             : '-translate-y-4 pointer-events-none opacity-0'
