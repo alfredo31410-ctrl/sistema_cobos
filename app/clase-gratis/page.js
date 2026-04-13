@@ -116,10 +116,7 @@ export default function ClaseGratisPage() {
                     Cupo limitado para esta edición
                   </p>
 
-                  <RegistrationForm
-                    buttonText="Quiero mi lugar"
-                    variant="dark"
-                  />
+              <ActiveCampaignForm />
 
                   <div className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-4 border-t border-white/10 pt-6 sm:pt-8">
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-400">
