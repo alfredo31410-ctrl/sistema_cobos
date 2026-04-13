@@ -138,3 +138,33 @@
     text-wrap: balance;
   }
 }
+
+.ac-form-wrapper {
+  width: 100%;
+}
+
+/* Quitar estilos default feos */
+.ac-form-wrapper form {
+  width: 100% !important;
+  margin: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Inputs */
+.ac-form-wrapper input,
+.ac-form-wrapper textarea,
+.ac-form-wrapper select {
+  width: 100% !important;
+  min-height: 48px !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+}
+
+/* Botón */
+.ac-form-wrapper button,
+.ac-form-wrapper ._submit {
+  width: 100% !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+}

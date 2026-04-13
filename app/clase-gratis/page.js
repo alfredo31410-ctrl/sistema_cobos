@@ -2,6 +2,7 @@ import Image from 'next/image';
 import SectionTitle from '@/components/SectionTitle';
 import RegistrationForm from '@/components/RegistrationForm';
 import VideoPlaceholder from '@/components/VideoPlaceholder';
+import ActiveCampaignForm from '@/components/ActiveCampaignForm';
 import {
   Check,
   X,
@@ -390,10 +391,7 @@ export default function ClaseGratisPage() {
               <p className="mb-6 sm:mb-8 text-sm sm:text-base text-neutral-400">
                 Cupo limitado para esta edición
               </p>
-              <RegistrationForm
-                buttonText="Quiero entrar a la clase"
-                variant="dark"
-              />
+              <ActiveCampaignForm />
             </div>
           </div>
         </div>
