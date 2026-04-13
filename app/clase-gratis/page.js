@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import SectionTitle from '@/components/SectionTitle';
-import RegistrationForm from '@/components/RegistrationForm';
 import VideoPlaceholder from '@/components/VideoPlaceholder';
 import ActiveCampaignForm from '@/components/ActiveCampaignForm';
 import {
@@ -115,8 +114,9 @@ export default function ClaseGratisPage() {
                   <p className="mb-6 sm:mb-8 text-center text-sm sm:text-base text-neutral-400">
                     Cupo limitado para esta edición
                   </p>
-
+                  <div id='formulario'>
               <ActiveCampaignForm />
+              </div>
 
                   <div className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-4 border-t border-white/10 pt-6 sm:pt-8">
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-400">
@@ -388,7 +388,9 @@ export default function ClaseGratisPage() {
               <p className="mb-6 sm:mb-8 text-sm sm:text-base text-neutral-400">
                 Cupo limitado para esta edición
               </p>
-              <ActiveCampaignForm />
+              <a href="#formulario" className="inline-block bg-cefin-red hover:bg-cefin-red/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+                Reservar lugar
+              </a>
             </div>
           </div>
         </div>
