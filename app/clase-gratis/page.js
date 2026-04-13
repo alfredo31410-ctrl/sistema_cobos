@@ -81,7 +81,34 @@ export default function ClaseGratisPage() {
                 Aunque hoy no estés vendiendo online o no tengas una estructura clara.
               </p>
 
+              {/* VSL temporalmente desactivada */}
+              {/*
               <VideoPlaceholder className="mb-8 sm:mb-10" />
+              */}
+
+              {/* Imagen provisional mientras se integra la VSL */}
+              <div className="mb-8 sm:mb-10">
+                <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-neutral-200 bg-neutral-100 shadow-xl">
+                  <div className="relative aspect-video w-full">
+                    <Image
+                      src="/images/monetiza-conocimiento.jpg"
+                      alt="Clase gratuita sobre monetizar tu conocimiento"
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </div>
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-2 text-xs sm:text-sm font-semibold text-neutral-900 shadow">
+                      <Video className="h-4 w-4 text-cefin-red" />
+                      Próximamente: Video de presentación
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <div className="rounded-2xl sm:rounded-3xl border border-neutral-100 bg-white p-5 sm:p-6 lg:p-8 shadow-xl">
                 <h3 className="mb-5 sm:mb-6 text-lg sm:text-xl font-bold text-neutral-900">
@@ -114,9 +141,10 @@ export default function ClaseGratisPage() {
                   <p className="mb-6 sm:mb-8 text-center text-sm sm:text-base text-neutral-400">
                     Cupo limitado para esta edición
                   </p>
-                  <div id='formulario'>
-              <ActiveCampaignForm />
-              </div>
+
+                  <div id="formulario">
+                    <ActiveCampaignForm />
+                  </div>
 
                   <div className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-4 border-t border-white/10 pt-6 sm:pt-8">
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-400">
@@ -322,7 +350,6 @@ export default function ClaseGratisPage() {
       <section className="section-padding bg-gradient-to-b from-neutral-50 to-white">
         <div className="page-container">
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
-            {/* Not For You */}
             <div className="rounded-2xl sm:rounded-3xl border border-neutral-100 bg-white p-5 sm:p-6 lg:p-8 xl:p-10 shadow-xl">
               <h3 className="mb-6 sm:mb-8 text-xl sm:text-2xl font-bold text-neutral-900">
                 Para quién NO es
@@ -342,7 +369,6 @@ export default function ClaseGratisPage() {
               </div>
             </div>
 
-            {/* For You */}
             <div className="rounded-2xl sm:rounded-3xl bg-cefin-dark p-5 sm:p-6 lg:p-8 xl:p-10 shadow-2xl">
               <h3 className="mb-6 sm:mb-8 text-xl sm:text-2xl font-bold text-white">
                 Para quién SÍ es
@@ -388,7 +414,10 @@ export default function ClaseGratisPage() {
               <p className="mb-6 sm:mb-8 text-sm sm:text-base text-neutral-400">
                 Cupo limitado para esta edición
               </p>
-              <a href="#formulario" className="inline-block bg-cefin-red hover:bg-cefin-red/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
+              <a
+                href="#formulario"
+                className="inline-block rounded-lg bg-cefin-red px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-cefin-red/90"
+              >
                 Reservar lugar
               </a>
             </div>
