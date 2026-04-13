@@ -199,22 +199,31 @@ export default function DiagnosticoPage() {
     }));
   };
 
-  const validateRequired = () => {
-    if (!formData.nombre.trim()) return 'Por favor, escribe tu nombre.';
-    if (!formData.correo.trim()) return 'Por favor, escribe tu correo.';
-    if (!formData.whatsapp.trim()) return 'Por favor, escribe tu WhatsApp.';
-    return '';
-  };
+const validateRequired = () => {
+  if (!formData.nombre) return 'El nombre es obligatorio'
+  if (!formData.correo) return 'El correo es obligatorio'
+  if (!formData.whatsapp) return 'El WhatsApp es obligatorio'
+  if (!formData.redes) return 'Las redes sociales son obligatorias'
+
+  for (let i = 1; i <= 21; i++) {
+    if (!formData[`p${i}`]) {
+      return `Debes responder la pregunta ${i}`
+    }
+  }
+
+  return null
+}
 
 const handleSubmit = async (e) => {
   e.preventDefault();
   setErrorMessage('');
 
-  const validationError = validateRequired();
-  if (validationError) {
-    setErrorMessage(validationError);
-    return;
-  }
+const validationError = validateRequired()
+
+if (validationError) {
+  setErrorMessage(validationError)
+  return
+}
 
   try {
     setLoading(true);
