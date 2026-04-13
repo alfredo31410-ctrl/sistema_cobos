@@ -1,20 +1,21 @@
-import PlaceholderSection from '@/components/PlaceholderSection';
 import { Sparkles } from 'lucide-react';
 
 export default function SistemaCobosPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-neutral-900 via-neutral-900 to-neutral-800 text-white">
-        <div className="container mx-auto px-4 lg:px-8 py-16 lg:py-24">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="w-20 h-20 rounded-full bg-cefin-red/20 flex items-center justify-center mx-auto mb-8">
-              <Sparkles className="w-10 h-10 text-cefin-red" />
+      <section className="relative flex min-h-[50vh] sm:min-h-[55vh] lg:min-h-[60vh] items-center bg-gradient-to-br from-neutral-900 via-neutral-900 to-neutral-800 text-white">
+        <div className="page-container py-14 sm:py-16 lg:py-24">
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="mx-auto mb-6 sm:mb-8 flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-cefin-red/20">
+              <Sparkles className="h-8 w-8 sm:h-10 sm:w-10 text-cefin-red" />
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
+
+            <h1 className="mb-5 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
               Sistema Cobos™
             </h1>
-            <p className="text-xl text-neutral-300 max-w-2xl mx-auto">
+
+            <p className="mx-auto max-w-2xl text-base sm:text-lg lg:text-xl text-neutral-300">
               El sistema completo para convertir tu conocimiento en un negocio escalable.
             </p>
           </div>
@@ -22,26 +23,29 @@ export default function SistemaCobosPage() {
       </section>
 
       {/* Placeholder Content */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <div className="border-2 border-dashed border-neutral-300 rounded-3xl p-12 lg:p-16 text-center bg-neutral-50">
-              <div className="w-24 h-24 rounded-full bg-neutral-200 flex items-center justify-center mx-auto mb-8">
-                <Sparkles className="w-12 h-12 text-neutral-400" />
+      <section className="section-padding bg-white">
+        <div className="page-container">
+          <div className="mx-auto max-w-3xl">
+            <div className="rounded-2xl sm:rounded-3xl border-2 border-dashed border-neutral-300 bg-neutral-50 p-6 sm:p-8 lg:p-12 xl:p-16 text-center">
+              <div className="mx-auto mb-6 sm:mb-8 flex h-20 w-20 sm:h-24 sm:w-24 items-center justify-center rounded-full bg-neutral-200">
+                <Sparkles className="h-10 w-10 sm:h-12 sm:w-12 text-neutral-400" />
               </div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4">
+
+              <h2 className="mb-3 sm:mb-4 text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900">
                 Muy pronto
               </h2>
-              <p className="text-xl text-neutral-500 mb-8">
+
+              <p className="mb-6 sm:mb-8 text-base sm:text-lg lg:text-xl leading-relaxed text-neutral-500">
                 Estamos preparando todos los detalles del Sistema Cobos™.
                 Pronto podrás acceder al programa completo.
               </p>
-              <div className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 text-white rounded-full">
+
+              <div className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 sm:px-6 py-3 text-white">
                 <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cefin-red opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-cefin-red"></span>
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cefin-red opacity-75" />
+                  <span className="relative inline-flex h-3 w-3 rounded-full bg-cefin-red" />
                 </span>
-                <span className="font-medium">En desarrollo</span>
+                <span className="text-sm sm:text-base font-medium">En desarrollo</span>
               </div>
             </div>
           </div>
@@ -49,33 +53,48 @@ export default function SistemaCobosPage() {
       </section>
 
       {/* What to Expect */}
-      <section className="py-24 lg:py-32 bg-neutral-50">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-12 text-center">
+      <section className="section-padding bg-neutral-50">
+        <div className="page-container">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="mb-8 sm:mb-10 lg:mb-12 text-center text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900">
               ¿Qué es el Sistema Cobos™?
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center mx-auto mb-6">
-                  <span className="text-3xl font-bold text-cefin-red">E</span>
+
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 sm:gap-8">
+              <div className="text-center rounded-2xl bg-white p-6 sm:p-7 shadow-sm border border-neutral-100">
+                <div className="mx-auto mb-5 sm:mb-6 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-neutral-50 shadow-sm">
+                  <span className="text-2xl sm:text-3xl font-bold text-cefin-red">E</span>
                 </div>
-                <h3 className="text-xl font-bold text-neutral-900 mb-2">Estrategia</h3>
-                <p className="text-neutral-600">Claridad sobre qué vender y a quién</p>
+                <h3 className="mb-2 text-lg sm:text-xl font-bold text-neutral-900">
+                  Estrategia
+                </h3>
+                <p className="text-sm sm:text-base text-neutral-600">
+                  Claridad sobre qué vender y a quién
+                </p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center mx-auto mb-6">
-                  <span className="text-3xl font-bold text-cefin-red">E</span>
+
+              <div className="text-center rounded-2xl bg-white p-6 sm:p-7 shadow-sm border border-neutral-100">
+                <div className="mx-auto mb-5 sm:mb-6 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-neutral-50 shadow-sm">
+                  <span className="text-2xl sm:text-3xl font-bold text-cefin-red">E</span>
                 </div>
-                <h3 className="text-xl font-bold text-neutral-900 mb-2">Estructura</h3>
-                <p className="text-neutral-600">Un sistema organizado para vender</p>
+                <h3 className="mb-2 text-lg sm:text-xl font-bold text-neutral-900">
+                  Estructura
+                </h3>
+                <p className="text-sm sm:text-base text-neutral-600">
+                  Un sistema organizado para vender
+                </p>
               </div>
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center mx-auto mb-6">
-                  <span className="text-3xl font-bold text-cefin-red">E</span>
+
+              <div className="text-center rounded-2xl bg-white p-6 sm:p-7 shadow-sm border border-neutral-100 sm:col-span-2 lg:col-span-1">
+                <div className="mx-auto mb-5 sm:mb-6 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-neutral-50 shadow-sm">
+                  <span className="text-2xl sm:text-3xl font-bold text-cefin-red">E</span>
                 </div>
-                <h3 className="text-xl font-bold text-neutral-900 mb-2">Ejecución</h3>
-                <p className="text-neutral-600">Acción enfocada en resultados</p>
+                <h3 className="mb-2 text-lg sm:text-xl font-bold text-neutral-900">
+                  Ejecución
+                </h3>
+                <p className="text-sm sm:text-base text-neutral-600">
+                  Acción enfocada en resultados
+                </p>
               </div>
             </div>
           </div>

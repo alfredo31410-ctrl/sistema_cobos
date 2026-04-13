@@ -2,51 +2,74 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
-export default function CTAButton({ 
-  href, 
-  children, 
+export default function CTAButton({
+  href,
+  children,
   variant = 'primary',
   size = 'default',
   showArrow = false,
   className = '',
   fullWidth = false,
-  ...props 
+  ...props
 }) {
   const variants = {
-    primary: 'bg-cefin-red hover:bg-cefin-red-dark text-white shadow-lg shadow-cefin-red/20 hover:shadow-xl hover:shadow-cefin-red/30 hover:-translate-y-0.5',
-    secondary: 'bg-neutral-900 hover:bg-neutral-800 text-white shadow-lg shadow-neutral-900/20 hover:shadow-xl hover:shadow-neutral-900/30 hover:-translate-y-0.5',
-    outline: 'border-2 border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white bg-transparent',
-    outlineLight: 'border-2 border-white/30 text-white hover:bg-white hover:text-neutral-900 bg-transparent backdrop-blur-sm',
-    ghost: 'text-neutral-900 hover:bg-neutral-100 bg-transparent',
-    ghostLight: 'text-white hover:bg-white/10 bg-transparent',
+    primary:
+      'bg-cefin-red text-white shadow-lg shadow-cefin-red/20 hover:bg-cefin-red-dark hover:shadow-xl hover:shadow-cefin-red/25',
+    secondary:
+      'bg-neutral-900 text-white shadow-lg shadow-neutral-900/20 hover:bg-neutral-800 hover:shadow-xl hover:shadow-neutral-900/25',
+    outline:
+      'border-2 border-neutral-900 bg-transparent text-neutral-900 hover:bg-neutral-900 hover:text-white',
+    outlineLight:
+      'border-2 border-white/30 bg-transparent text-white backdrop-blur-sm hover:bg-white hover:text-neutral-900',
+    ghost:
+      'bg-transparent text-neutral-900 hover:bg-neutral-100',
+    ghostLight:
+      'bg-transparent text-white hover:bg-white/10',
   };
 
-  const sizes = {
-    sm: 'px-5 py-2.5 text-sm',
-    default: 'px-7 py-3.5 text-base',
-    lg: 'px-9 py-4.5 text-lg',
-    xl: 'px-10 py-5 text-lg',
-  };
+const sizes = {
+  sm: 'h-10 px-4 text-sm',
+  default: 'h-11 sm:h-12 px-5 sm:px-6 text-sm sm:text-base',
+  lg: 'h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg',
+  xl: 'h-12 sm:h-14 lg:h-16 px-6 sm:px-8 lg:px-10 text-base sm:text-lg',
+};
 
-  const buttonContent = (
-    <Button
-      className={`
-        font-semibold rounded-full transition-all duration-300
-        ${variants[variant]} 
-        ${sizes[size]} 
-        ${fullWidth ? 'w-full justify-center' : ''}
-        ${className}
-      `}
-      {...props}
-    >
+  const buttonClassName = `
+    group inline-flex items-center justify-center rounded-full font-semibold
+    whitespace-nowrap transition-all duration-300
+    hover:-translate-y-0.5
+    disabled:pointer-events-none disabled:opacity-50
+    ${variants[variant]}
+    ${sizes[size]}
+    ${fullWidth ? 'w-full' : ''}
+    ${className}
+  `;
+
+  const content = (
+    <>
       <span>{children}</span>
-      {showArrow && <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />}
-    </Button>
+      {showArrow && (
+        <ArrowRight className="ml-2 h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+      )}
+    </>
   );
 
   if (href) {
-    return <Link href={href} className="group">{buttonContent}</Link>;
+    return (
+      <Link
+        href={href}
+        className={`${fullWidth ? 'block w-full' : 'inline-flex'}`}
+      >
+        <Button className={buttonClassName} {...props}>
+          {content}
+        </Button>
+      </Link>
+    );
   }
 
-  return <span className="group">{buttonContent}</span>;
+  return (
+    <Button className={buttonClassName} {...props}>
+      {content}
+    </Button>
+  );
 }

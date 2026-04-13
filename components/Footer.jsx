@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Instagram, Linkedin, Youtube, Facebook, ArrowUpRight } from 'lucide-react';
+import { Instagram, Youtube, Facebook, ArrowUpRight } from 'lucide-react';
 
 const footerLinks = [
   { href: '/', label: 'Inicio' },
@@ -10,97 +10,117 @@ const footerLinks = [
   { href: '/agencia', label: 'Agencia' },
 ];
 
+const legalLinks = [
+  { href: '/aviso-de-privacidad', label: 'Aviso de privacidad' },
+  { href: '/terminos-y-condiciones', label: 'Términos y condiciones' },
+  { href: '/politica-de-cookies', label: 'Política de cookies' },
+];
+
 const socialLinks = [
-  { icon: Instagram, href: 'https://www.instagram.com/alfredocobosmx/', label: 'Instagram' },
-  { icon: Youtube, href: 'https://www.youtube.com/channel/UCcVhSDZCYZBqDyskJia8dOA', label: 'YouTube' },
-  { icon: Facebook, href: 'https://www.facebook.com/alfredo.cobos.5/?locale=es_LA', label: 'Facebook' },
+  {
+    icon: Instagram,
+    href: 'https://www.instagram.com/alfredocobosmx/',
+    label: 'Instagram',
+  },
+  {
+    icon: Youtube,
+    href: 'https://www.youtube.com/channel/UCcVhSDZCYZBqDyskJia8dOA',
+    label: 'YouTube',
+  },
+  {
+    icon: Facebook,
+    href: 'https://www.facebook.com/alfredo.cobos.5/?locale=es_LA',
+    label: 'Facebook',
+  },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-cefin-dark text-white">
-      {/* Main Footer */}
-      <div className="container mx-auto px-4 lg:px-8 py-20 lg:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
-          {/* Brand Column */}
+      {/* Main footer */}
+      <div className="page-container py-14 sm:py-16 lg:py-20">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+          {/* Brand */}
           <div className="lg:col-span-5">
-            <Link href="/" className="inline-block mb-6">
-              <span className="text-2xl lg:text-3xl font-bold tracking-tight">
+            <Link href="/" className="inline-block">
+              <span className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
                 Alfredo <span className="text-cefin-red">Cobos</span>
               </span>
             </Link>
-            <p className="text-neutral-400 text-lg leading-relaxed max-w-md mb-8">
-              Ayudo a personas a convertir su conocimiento en un negocio real 
+
+            <p className="mt-5 max-w-md text-sm sm:text-base lg:text-lg leading-relaxed text-neutral-400">
+              Ayudo a personas a convertir su conocimiento en un negocio real
               con estructura, estrategia y dirección.
             </p>
-            <div className="flex gap-3">
+
+            <div className="mt-7 flex flex-wrap gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
-                  className="w-11 h-11 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-cefin-red hover:border-cefin-red transition-all duration-300 group"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={social.label}
+                  className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all duration-300 hover:border-cefin-red hover:bg-cefin-red"
                 >
-                  <social.icon size={18} className="text-neutral-400 group-hover:text-white transition-colors" />
+                  <social.icon className="h-[18px] w-[18px] text-neutral-400 transition-colors duration-300 group-hover:text-white" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Navigation Column */}
-          <div className="lg:col-span-3 lg:col-start-7">
-            <h4 className="font-semibold text-sm uppercase tracking-wider text-neutral-500 mb-6">
+          {/* Navigation */}
+          <div className="md:col-span-1 lg:col-span-3 lg:col-start-7">
+            <h4 className="mb-5 text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
               Navegación
             </h4>
-            <ul className="space-y-4">
+
+            <ul className="space-y-3.5">
               {footerLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-neutral-400 hover:text-white transition-colors inline-flex items-center group"
+                    className="group inline-flex items-center text-sm sm:text-base text-neutral-400 transition-colors duration-200 hover:text-white"
                   >
-                    {link.label}
-                    <ArrowUpRight className="w-4 h-4 ml-1 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+                    <span>{link.label}</span>
+                    <ArrowUpRight className="ml-1.5 h-4 w-4 translate-x-0 translate-y-0 opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Legal Column */}
-          <div className="lg:col-span-3">
-            <h4 className="font-semibold text-sm uppercase tracking-wider text-neutral-500 mb-6">
+          {/* Legal */}
+          <div className="md:col-span-1 lg:col-span-3">
+            <h4 className="mb-5 text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
               Legal
             </h4>
-            <ul className="space-y-4">
-              <li>
-                <Link href="#" className="text-neutral-400 hover:text-white transition-colors">
-                  Aviso de privacidad
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-neutral-400 hover:text-white transition-colors">
-                  Términos y condiciones
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-neutral-400 hover:text-white transition-colors">
-                  Política de cookies
-                </Link>
-              </li>
+
+            <ul className="space-y-3.5">
+              {legalLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="text-sm sm:text-base text-neutral-400 transition-colors duration-200 hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/5">
-        <div className="container mx-auto px-4 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-neutral-500 text-sm">
+      {/* Bottom bar */}
+      <div className="border-t border-white/10">
+        <div className="page-container py-5 sm:py-6">
+          <div className="flex flex-col gap-2 text-center md:flex-row md:items-center md:justify-between md:text-left">
+            <p className="text-xs sm:text-sm text-neutral-500">
               © {new Date().getFullYear()} Alfredo Cobos. Todos los derechos reservados.
             </p>
-            <p className="text-neutral-600 text-sm">
+
+            <p className="text-xs sm:text-sm text-neutral-600">
               Diseñado para transformar conocimiento en negocio.
             </p>
           </div>

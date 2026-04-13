@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -15,89 +16,164 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 12);
     };
+
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, []);
+
+  const isActive = (href) => pathname === href;
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-white/95 backdrop-blur-md shadow-soft py-3' 
-        : 'bg-transparent py-5'
-    }`}>
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <span className="text-xl lg:text-2xl font-bold text-neutral-900 tracking-tight">
+    <>
+      <nav
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? 'bg-white/92 backdrop-blur-xl border-b border-neutral-200/70 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.18)]'
+            : 'bg-white/75 backdrop-blur-md border-b border-transparent'
+        }`}
+      >
+        <div className="page-container">
+          <div className="flex h-16 sm:h-18 lg:h-20 items-center justify-between gap-4">
+            {/* Logo */}
+            <Link
+              href="/"
+              className="shrink-0 text-lg sm:text-xl lg:text-2xl font-bold tracking-tight text-neutral-900"
+              aria-label="Ir al inicio"
+            >
               Alfredo <span className="text-cefin-red">Cobos</span>
-            </span>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-4 py-2 text-sm font-medium text-neutral-600 hover:text-neutral-900 rounded-full hover:bg-neutral-100/80 transition-all duration-200"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden lg:block">
-            <Link href="/clase-gratis">
-              <Button className="bg-cefin-red hover:bg-cefin-red-dark text-white font-semibold px-6 py-2.5 rounded-full shadow-lg shadow-cefin-red/25 hover:shadow-xl hover:shadow-cefin-red/30 transition-all duration-300 hover:-translate-y-0.5">
-                Quiero registrarme
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
             </Link>
+
+            {/* Desktop nav */}
+            <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+              {navLinks.map((link) => {
+                const active = isActive(link.href);
+
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`rounded-full px-4 xl:px-5 py-2 text-sm font-medium transition-all duration-200 ${
+                      active
+                        ? 'bg-neutral-900 text-white'
+                        : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Desktop CTA */}
+            <div className="hidden lg:flex items-center">
+              <Link href="/clase-gratis">
+                <Button className="h-11 rounded-full bg-cefin-red px-5 xl:px-6 text-sm font-semibold text-white shadow-lg shadow-cefin-red/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-cefin-red-dark hover:shadow-xl hover:shadow-cefin-red/25">
+                  Quiero registrarme
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+
+            {/* Mobile button */}
+            <button
+              type="button"
+              className="inline-flex lg:hidden h-11 w-11 items-center justify-center rounded-full border border-neutral-200 bg-white text-neutral-900 transition hover:bg-neutral-50"
+              onClick={() => setIsOpen((prev) => !prev)}
+              aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2 rounded-full hover:bg-neutral-100 transition-colors"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
+      </nav>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="lg:hidden mt-4 pb-6 animate-fade-up">
-            <div className="flex flex-col gap-1 mb-6">
-              {navLinks.map((link) => (
+      {/* Spacer para compensar navbar fixed */}
+      <div className="h-16 sm:h-18 lg:h-20" />
+
+      {/* Mobile overlay */}
+      <div
+        className={`lg:hidden fixed inset-0 z-40 bg-black/30 transition-opacity duration-300 ${
+          isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+        onClick={() => setIsOpen(false)}
+        aria-hidden="true"
+      />
+
+      {/* Mobile panel */}
+      <div
+        id="mobile-menu"
+        className={`lg:hidden fixed top-16 sm:top-18 left-0 right-0 z-50 border-t border-neutral-200 bg-white shadow-2xl transition-all duration-300 ${
+          isOpen
+            ? 'translate-y-0 opacity-100'
+            : '-translate-y-4 pointer-events-none opacity-0'
+        }`}
+      >
+        <div className="page-container py-5">
+          <div className="flex flex-col gap-2">
+            {navLinks.map((link) => {
+              const active = isActive(link.href);
+
+              return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-4 py-3 text-base font-medium text-neutral-700 hover:text-neutral-900 hover:bg-neutral-50 rounded-xl transition-colors"
+                  className={`rounded-2xl px-4 py-3 text-base font-medium transition-all duration-200 ${
+                    active
+                      ? 'bg-neutral-900 text-white'
+                      : 'text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900'
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {link.label}
                 </Link>
-              ))}
-            </div>
+              );
+            })}
+          </div>
+
+          <div className="mt-5 border-t border-neutral-200 pt-5">
             <Link href="/clase-gratis" onClick={() => setIsOpen(false)}>
-              <Button className="w-full bg-cefin-red hover:bg-cefin-red-dark text-white font-semibold py-3 rounded-full">
+              <Button className="h-12 w-full rounded-full bg-cefin-red text-base font-semibold text-white shadow-lg shadow-cefin-red/20 transition-all duration-300 hover:bg-cefin-red-dark">
                 Quiero registrarme
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>
-        )}
+        </div>
       </div>
-    </nav>
+    </>
   );
 }

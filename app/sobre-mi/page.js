@@ -1,7 +1,14 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import CTAButton from '@/components/CTAButton';
-import { Check, Award, Users, DollarSign, Trophy, BookOpen, Rocket } from 'lucide-react';
+import {
+  Check,
+  Award,
+  Users,
+  DollarSign,
+  Trophy,
+  BookOpen,
+  Rocket,
+} from 'lucide-react';
 
 const achievements = [
   { icon: DollarSign, text: 'Generar millones de pesos año tras año con CEFIN, desde 2019' },
@@ -22,67 +29,74 @@ const forYouItems = [
 export default function SobreMiPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-neutral-50 to-white">
-        <div className="container mx-auto px-4 lg:px-8 py-16 lg:py-24">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight tracking-tight mb-6">
-              No empecé con un negocio…<br />
+      {/* HERO */}
+      <section className="relative flex min-h-[55vh] sm:min-h-[60vh] lg:min-h-[70vh] items-center bg-gradient-to-br from-neutral-50 to-white">
+        <div className="page-container py-14 sm:py-16 lg:py-24">
+          <div className="mx-auto max-w-4xl text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight text-neutral-900 mb-5 sm:mb-6">
+              No empecé con un negocio…
+              <br />
               <span className="text-cefin-red">empecé sabiendo hacer algo</span>
             </h1>
-            <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
+
+            <p className="mx-auto max-w-2xl text-base sm:text-lg lg:text-xl text-neutral-600">
               Y como muchos, pensé que eso era suficiente.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Reality Block */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      {/* REALITY */}
+      <section className="section-padding bg-white">
+        <div className="page-container">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
             <div className="relative">
-              <div className="aspect-[4/5] max-w-md mx-auto">
-                <div className="absolute inset-0 bg-cefin-red/10 rounded-3xl transform rotate-3" />
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+              <div className="relative mx-auto aspect-[4/5] max-w-sm sm:max-w-md">
+                <div className="absolute inset-0 rounded-3xl bg-cefin-red/10 rotate-3" />
+                <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                   <Image
                     src="/images/realidad.png"
                     alt="Alfredo Cobos"
                     width={800}
                     height={1000}
-                    className="object-cover"
+                    className="h-full w-full object-cover"
                   />
                 </div>
               </div>
             </div>
+
             <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-8">
+              <h2 className="mb-6 sm:mb-8 text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900">
                 La realidad
               </h2>
-              <div className="space-y-6 text-lg text-neutral-600 leading-relaxed">
+
+              <div className="space-y-5 sm:space-y-6 text-sm sm:text-base lg:text-lg leading-relaxed text-neutral-600">
                 <p>Durante mucho tiempo hice lo que hace la mayoría:</p>
+
                 <ul className="space-y-3 text-neutral-700">
                   <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-cefin-red rounded-full" />
+                    <span className="h-2 w-2 rounded-full bg-cefin-red" />
                     Enseñar
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-cefin-red rounded-full" />
+                    <span className="h-2 w-2 rounded-full bg-cefin-red" />
                     Explicar
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-cefin-red rounded-full" />
+                    <span className="h-2 w-2 rounded-full bg-cefin-red" />
                     Compartir conocimiento
                   </li>
                   <li className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-cefin-red rounded-full" />
+                    <span className="h-2 w-2 rounded-full bg-cefin-red" />
                     Ayudar a otros
                   </li>
                 </ul>
+
                 <p>
                   Y sí… <strong className="text-neutral-900">era bueno en eso.</strong>
                 </p>
-                <p className="text-xl font-medium text-neutral-900">
+
+                <p className="text-base sm:text-lg lg:text-xl font-medium text-neutral-900">
                   Pero había un problema: eso no era un negocio.
                 </p>
               </div>
@@ -91,24 +105,30 @@ export default function SobreMiPage() {
         </div>
       </section>
 
-      {/* The Break */}
-      <section className="py-24 lg:py-32 bg-neutral-900 text-white">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-8">
+      {/* THE BREAK */}
+      <section className="section-padding bg-neutral-900 text-white">
+        <div className="page-container">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="mb-6 sm:mb-8 text-2xl sm:text-3xl lg:text-4xl font-bold">
               El quiebre
             </h2>
-            <div className="space-y-6 text-lg text-neutral-300 leading-relaxed">
+
+            <div className="space-y-5 sm:space-y-6 text-sm sm:text-base lg:text-lg leading-relaxed text-neutral-300">
               <p>Puedes saber mucho.</p>
               <p>Puedes explicar bien.</p>
               <p>Puedes tener experiencia.</p>
-              <p className="text-xl text-white font-medium">Y aún así…</p>
+
+              <p className="text-base sm:text-lg lg:text-xl font-medium text-white">
+                Y aún así…
+              </p>
+
               <ul className="space-y-3 text-neutral-400">
                 <li>→ No saber vender</li>
                 <li>→ No saber estructurar</li>
                 <li>→ No saber crecer</li>
               </ul>
-              <p className="text-xl text-cefin-red font-semibold pt-4">
+
+              <p className="pt-2 sm:pt-4 text-base sm:text-lg lg:text-xl font-semibold text-cefin-red">
                 Porque nadie te enseña eso.
               </p>
             </div>
@@ -116,103 +136,115 @@ export default function SobreMiPage() {
         </div>
       </section>
 
-      {/* The Change */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-8">
+      {/* THE CHANGE */}
+      <section className="section-padding bg-white">
+        <div className="page-container">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="mb-6 sm:mb-8 text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900">
               El cambio
             </h2>
-            <div className="space-y-6 text-lg text-neutral-600 leading-relaxed">
-              <p>
-                En algún punto entendí algo que cambió todo:
-              </p>
-              <blockquote className="text-2xl lg:text-3xl font-bold text-neutral-900 border-l-4 border-cefin-red pl-6 py-4">
+
+            <div className="space-y-5 sm:space-y-6 text-sm sm:text-base lg:text-lg leading-relaxed text-neutral-600">
+              <p>En algún punto entendí algo que cambió todo:</p>
+
+              <blockquote className="border-l-4 border-cefin-red pl-4 sm:pl-6 py-3 sm:py-4 text-xl sm:text-2xl lg:text-3xl font-bold text-neutral-900 leading-tight">
                 El conocimiento no se vende solo… necesita estructura.
               </blockquote>
+
               <p>
-                Ahí dejé de pensar como alguien que enseña… 
-                <strong className="text-neutral-900"> y empecé a construir algo distinto.</strong>
+                Ahí dejé de pensar como alguien que enseña…
+                <strong className="text-neutral-900">
+                  {' '}y empecé a construir algo distinto.
+                </strong>
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Achievements */}
-      <section className="py-24 lg:py-32 bg-neutral-50">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-12">
+      {/* ACHIEVEMENTS */}
+      <section className="section-padding bg-neutral-50">
+        <div className="page-container">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="mb-8 sm:mb-10 lg:mb-12 text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900">
               Resultados y autoridad real
             </h2>
-            <div className="grid gap-6">
+
+            <div className="grid gap-4 sm:gap-5 lg:gap-6">
               {achievements.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-sm"
+                  className="flex items-start gap-4 rounded-xl bg-white p-4 sm:p-5 lg:p-6 shadow-sm border border-neutral-100"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-cefin-red/10 flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-6 h-6 text-cefin-red" />
+                  <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-cefin-red/10">
+                    <item.icon className="h-5 w-5 sm:h-6 sm:w-6 text-cefin-red" />
                   </div>
-                  <p className="text-lg text-neutral-700 pt-2">{item.text}</p>
+                  <p className="pt-1 text-sm sm:text-base lg:text-lg text-neutral-700">
+                    {item.text}
+                  </p>
                 </div>
               ))}
             </div>
-            <div className="mt-8 p-6 bg-neutral-900 rounded-xl">
-              <p className="text-lg text-white font-medium">
-                Y algo más importante que los números: 
-                <span className="text-cefin-red"> haber convertido conocimiento en un negocio replicable.</span>
+
+            <div className="mt-6 sm:mt-8 rounded-xl bg-neutral-900 p-5 sm:p-6">
+              <p className="text-base sm:text-lg font-medium text-white">
+                Y algo más importante que los números:
+                <span className="text-cefin-red">
+                  {' '}haber convertido conocimiento en un negocio replicable.
+                </span>
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What I Do Today */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      {/* WHAT I DO TODAY */}
+      <section className="section-padding bg-white">
+        <div className="page-container">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-8">
+              <h2 className="mb-6 sm:mb-8 text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900">
                 Lo que hago hoy
               </h2>
-              <div className="space-y-6 text-lg text-neutral-600 leading-relaxed">
-                <p>
-                  Hoy hago algo muy específico:
-                </p>
-                <p className="text-xl text-neutral-900 font-medium">
+
+              <div className="space-y-5 sm:space-y-6 text-sm sm:text-base lg:text-lg leading-relaxed text-neutral-600">
+                <p>Hoy hago algo muy específico:</p>
+
+                <p className="text-base sm:text-lg lg:text-xl font-medium text-neutral-900">
                   Ayudo a personas que saben hacer algo…
                 </p>
+
                 <ul className="space-y-3 text-neutral-700">
                   <li className="flex items-center gap-3">
-                    <Check className="w-5 h-5 text-cefin-red" />
+                    <Check className="h-5 w-5 text-cefin-red" />
                     A estructurarlo
                   </li>
                   <li className="flex items-center gap-3">
-                    <Check className="w-5 h-5 text-cefin-red" />
+                    <Check className="h-5 w-5 text-cefin-red" />
                     Convertirlo en una oferta clara
                   </li>
                   <li className="flex items-center gap-3">
-                    <Check className="w-5 h-5 text-cefin-red" />
+                    <Check className="h-5 w-5 text-cefin-red" />
                     Y transformarlo en un negocio real
                   </li>
                 </ul>
-                <p className="text-neutral-900 font-medium">
+
+                <p className="font-medium text-neutral-900">
                   Sin vueltas. Sin teoría innecesaria. Sin humo.
                 </p>
               </div>
             </div>
+
             <div className="relative">
-              <div className="aspect-square max-w-md mx-auto">
-                <div className="absolute inset-0 bg-cefin-red/10 rounded-3xl transform -rotate-3" />
-                <div className="relative rounded-3xl overflow-hidden shadow-xl">
+              <div className="relative mx-auto aspect-square max-w-sm sm:max-w-md">
+                <div className="absolute inset-0 rounded-3xl bg-cefin-red/10 -rotate-3" />
+                <div className="relative overflow-hidden rounded-3xl shadow-xl">
                   <Image
                     src="/images/enseñando.png"
                     alt="Alfredo Cobos enseñando"
                     width={800}
                     height={800}
-                    className="object-cover"
+                    className="h-full w-full object-cover"
                   />
                 </div>
               </div>
@@ -221,20 +253,28 @@ export default function SobreMiPage() {
         </div>
       </section>
 
-      {/* The System */}
-      <section className="py-24 lg:py-32 bg-neutral-900 text-white">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-8">
+      {/* THE SYSTEM */}
+      <section className="section-padding bg-neutral-900 text-white">
+        <div className="page-container">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="mb-6 sm:mb-8 text-2xl sm:text-3xl lg:text-4xl font-bold">
               El Sistema
             </h2>
-            <div className="space-y-6 text-lg text-neutral-300 leading-relaxed">
+
+            <div className="space-y-5 sm:space-y-6 text-sm sm:text-base lg:text-lg leading-relaxed text-neutral-300">
               <p>Todo esto no salió de la nada.</p>
               <p>Se convirtió en una forma de trabajar.</p>
               <p>En una lógica clara.</p>
-              <p className="text-3xl font-bold text-white pt-4">En un sistema.</p>
-              <p className="text-2xl font-bold text-cefin-red">Sistema Cobos™</p>
-              <p className="text-neutral-400 pt-4">
+
+              <p className="pt-2 sm:pt-4 text-2xl sm:text-3xl font-bold text-white">
+                En un sistema.
+              </p>
+
+              <p className="text-xl sm:text-2xl font-bold text-cefin-red">
+                Sistema Cobos™
+              </p>
+
+              <p className="pt-2 sm:pt-4 text-neutral-400">
                 No es inspiración. Es estructura aplicada.
               </p>
             </div>
@@ -242,26 +282,30 @@ export default function SobreMiPage() {
         </div>
       </section>
 
-      {/* For Whom */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-8 text-center">
+      {/* FOR WHOM */}
+      <section className="section-padding bg-white">
+        <div className="page-container">
+          <div className="mx-auto max-w-3xl">
+            <h2 className="mb-6 sm:mb-8 text-center text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900">
               ¿Para quién es esto?
             </h2>
-            <p className="text-lg text-neutral-600 mb-8 text-center">
+
+            <p className="mb-6 sm:mb-8 text-center text-sm sm:text-base lg:text-lg text-neutral-600">
               Esto es para ti si:
             </p>
+
             <div className="grid gap-4">
               {forYouItems.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-4 p-6 bg-neutral-50 rounded-xl"
+                  className="flex items-center gap-4 rounded-xl bg-neutral-50 p-4 sm:p-5 lg:p-6"
                 >
-                  <div className="w-8 h-8 rounded-full bg-cefin-red flex items-center justify-center flex-shrink-0">
-                    <Check className="w-4 h-4 text-white" />
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cefin-red">
+                    <Check className="h-4 w-4 text-white" />
                   </div>
-                  <p className="text-lg text-neutral-700">{item}</p>
+                  <p className="text-sm sm:text-base lg:text-lg text-neutral-700">
+                    {item}
+                  </p>
                 </div>
               ))}
             </div>
@@ -269,16 +313,18 @@ export default function SobreMiPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-24 lg:py-32 bg-neutral-50">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-6">
+      {/* FINAL CTA */}
+      <section className="section-padding bg-neutral-50">
+        <div className="page-container">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-5 sm:mb-6 text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900">
               Si hoy sabes algo… ya tienes lo más difícil
             </h2>
-            <p className="text-xl text-neutral-600 mb-10">
+
+            <p className="mb-8 sm:mb-10 text-base sm:text-lg lg:text-xl text-neutral-600">
               Lo que sigue no es aprender más. Es estructurarlo.
             </p>
+
             <CTAButton href="/clase-gratis" variant="primary" size="lg" showArrow>
               Empieza aquí: Monetiza tu conocimiento
             </CTAButton>
