@@ -1,6 +1,8 @@
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import MetaPixelScript from "@/components/meta-pixel-script";
+import MetaPixelPageView from "@/components/meta-pixel-page-view";
 
 export const metadata = {
   title: 'Alfredo Cobos | Monetiza tu Conocimiento',
@@ -17,12 +19,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" className="scroll-smooth">
-      <body className="min-h-screen bg-background text-foreground antialiased flex flex-col">
+    <html lang="es">
+      <body>
+        <MetaPixelScript />
+        <MetaPixelPageView />
         <Navbar />
-        <main className="flex-1 w-full">
-          {children}
-        </main>
+        {children}
         <Footer />
       </body>
     </html>
