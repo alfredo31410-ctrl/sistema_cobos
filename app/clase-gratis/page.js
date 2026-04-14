@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SectionTitle from "@/components/SectionTitle";
 import ActiveCampaignForm from "@/components/ActiveCampaignForm";
 import RegisterModal from "@/components/RegisterModal";
+import { track, trackCustom } from "@/lib/meta-pixel";
 import {
   Check,
   X,
@@ -61,6 +62,22 @@ const authorityItems = [
 
 export default function ClaseGratisPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    trackCustom("ViewContent", { 
+      content_name: "Clase Gratis - Monetiza tu Conocimiento",
+      content_category: "Landing Page",
+      content_type: "event",
+    });
+  }, []);
+
+  const handleOpenModal = (location) => {
+    trackCustom("OpenRegisterModal", { 
+      location,
+      page: "monetiza-tu-conocimiento", 
+    });
+    setIsModalOpen(true);
+  };
 
   return (
     <>
@@ -141,7 +158,7 @@ export default function ClaseGratisPage() {
               <div className="mt-7">
                 <button
                   type="button"
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={() => handleOpenModal("hero")}
                   className="inline-flex min-h-[60px] w-full max-w-[420px] items-center justify-center rounded-2xl bg-red-600 px-6 py-4 text-base font-black uppercase text-white shadow-[0_18px_45px_rgba(220,38,38,0.30)] transition duration-300 hover:-translate-y-1 hover:bg-red-500 sm:px-8 sm:py-5 sm:text-lg"
                 >
                   ¡Registrarme gratis ahora!
@@ -472,7 +489,7 @@ export default function ClaseGratisPage() {
 
               <button
                 type="button"
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => handleOpenModal("final-cta")}
                 className="inline-flex items-center justify-center rounded-xl bg-red-600 px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-red-500"
               >
                 Reservar lugar

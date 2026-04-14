@@ -10,8 +10,12 @@ export default function CTAButton({
   showArrow = false,
   className = '',
   fullWidth = false,
+  onClick,
   ...props
 }) {
+  const isExternal =
+    href?.startsWith('http') || href?.startsWith('https');
+
   const variants = {
     primary:
       'bg-cefin-red text-white shadow-lg shadow-cefin-red/20 hover:bg-cefin-red-dark hover:shadow-xl hover:shadow-cefin-red/25',
@@ -27,12 +31,12 @@ export default function CTAButton({
       'bg-transparent text-white hover:bg-white/10',
   };
 
-const sizes = {
-  sm: 'h-10 px-4 text-sm',
-  default: 'h-11 sm:h-12 px-5 sm:px-6 text-sm sm:text-base',
-  lg: 'h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg',
-  xl: 'h-12 sm:h-14 lg:h-16 px-6 sm:px-8 lg:px-10 text-base sm:text-lg',
-};
+  const sizes = {
+    sm: 'h-10 px-4 text-sm',
+    default: 'h-11 sm:h-12 px-5 sm:px-6 text-sm sm:text-base',
+    lg: 'h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg',
+    xl: 'h-12 sm:h-14 lg:h-16 px-6 sm:px-8 lg:px-10 text-base sm:text-lg',
+  };
 
   const buttonClassName = `
     group inline-flex items-center justify-center rounded-full font-semibold
@@ -54,21 +58,40 @@ const sizes = {
     </>
   );
 
+  // 🔥 LINK EXTERNO (WhatsApp, Hotmart, etc.)
+  if (href && isExternal) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={onClick}
+        className={fullWidth ? 'block w-full' : 'inline-flex'}
+      >
+        <Button className={buttonClassName} {...props}>
+          {content}
+        </Button>
+      </a>
+    );
+  }
+
+  // 🔹 LINK INTERNO
   if (href) {
     return (
       <Link
         href={href}
-        className={`${fullWidth ? 'block w-full' : 'inline-flex'}`}
+        className={fullWidth ? 'block w-full' : 'inline-flex'}
       >
-        <Button className={buttonClassName} {...props}>
+        <Button className={buttonClassName} {...props} onClick={onClick}>
           {content}
         </Button>
       </Link>
     );
   }
 
+  // 🔹 BOTÓN NORMAL
   return (
-    <Button className={buttonClassName} {...props}>
+    <Button className={buttonClassName} {...props} onClick={onClick}>
       {content}
     </Button>
   );
