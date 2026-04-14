@@ -51,7 +51,10 @@ const forYou = [
 ];
 
 const authorityItems = [
-  { icon: DollarSign, text: "Millones de pesos generados en educación digital" },
+  {
+    icon: DollarSign,
+    text: "Millones de pesos generados en educación digital",
+  },
   { icon: Users, text: "Miles de alumnos formados" },
   { icon: BookOpen, text: "Programas enfocados en resultados reales" },
 ];
@@ -76,25 +79,25 @@ export default function ClaseGratisPage() {
           />
         </div>
 
-{/* Fondo mobile con imagen */}
-<div className="absolute inset-0 z-0 overflow-hidden lg:hidden">
-  <Image
-    src="/images/monetiza-conocimiento.jpg"
-    alt="Fondo clase gratuita"
-    fill
-    priority
-    className="object-cover object-center opacity-[0.24]"
-  />
+        {/* Fondo mobile con imagen */}
+        <div className="absolute inset-0 z-0 overflow-hidden lg:hidden">
+          <Image
+            src="/images/monetiza-conocimiento.jpg"
+            alt="Fondo clase gratuita"
+            fill
+            priority
+            className="object-cover object-center opacity-[0.24]"
+          />
 
-  {/* Capa oscura para mantener legibilidad */}
-  <div className="absolute inset-0 bg-[#07152f]/72" />
+          {/* Capa oscura para mantener legibilidad */}
+          <div className="absolute inset-0 bg-[#07152f]/72" />
 
-  {/* Degradado superior e inferior para integrar mejor la imagen */}
-  <div className="absolute inset-0 bg-gradient-to-b from-[#07152f]/55 via-transparent to-[#07152f]" />
+          {/* Degradado superior e inferior para integrar mejor la imagen */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#07152f]/55 via-transparent to-[#07152f]" />
 
-  {/* Fade más fuerte al final para que no se vea cortada */}
-  <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent via-[#07152f]/75 to-[#07152f]" />
-</div>
+          {/* Fade más fuerte al final para que no se vea cortada */}
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent via-[#07152f]/75 to-[#07152f]" />
+        </div>
 
         <div className="page-container relative z-10 py-10 sm:py-14 lg:py-16 xl:py-20">
           <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-14">
@@ -195,10 +198,14 @@ export default function ClaseGratisPage() {
 
                 <div className="grid gap-4">
                   {bullets.map((bullet, index) => (
-                    <div key={index} className="flex items-start gap-3 sm:gap-4">
+                    <div
+                      key={index}
+                      className="flex items-start gap-3 sm:gap-4"
+                    >
                       <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-red-600/15">
                         <Check className="h-4 w-4 text-red-400" />
                       </div>
+
                       <p className="pt-0.5 text-sm text-white/85 sm:text-base lg:text-lg">
                         {bullet}
                       </p>
@@ -217,11 +224,15 @@ export default function ClaseGratisPage() {
           <div className="flex flex-wrap justify-center gap-5 text-white sm:gap-6 lg:gap-12">
             <div className="flex items-center gap-2 sm:gap-3">
               <Users className="h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="text-sm font-semibold sm:text-base">Cupo limitado</span>
+              <span className="text-sm font-semibold sm:text-base">
+                Cupo limitado
+              </span>
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               <Video className="h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="text-sm font-semibold sm:text-base">Acceso en vivo</span>
+              <span className="text-sm font-semibold sm:text-base">
+                Acceso en vivo
+              </span>
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               <Clock className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -477,11 +488,15 @@ export default function ClaseGratisPage() {
           <div className="flex flex-wrap justify-center gap-5 text-white sm:gap-6 lg:gap-12">
             <div className="flex items-center gap-2 sm:gap-3">
               <Video className="h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="text-sm font-semibold sm:text-base">Acceso en vivo</span>
+              <span className="text-sm font-semibold sm:text-base">
+                Acceso en vivo
+              </span>
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               <Users className="h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="text-sm font-semibold sm:text-base">Cupo limitado</span>
+              <span className="text-sm font-semibold sm:text-base">
+                Cupo limitado
+              </span>
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               <Clock className="h-4 w-4 sm:h-5 sm:w-5" />
