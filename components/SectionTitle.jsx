@@ -15,16 +15,15 @@ export default function SectionTitle({
 
   return (
     <div
-      className={`mb-12 sm:mb-14 md:mb-16 lg:mb-20 ${
+      className={`mb-8 sm:mb-10 md:mb-12 lg:mb-14 ${
         centered
-          ? 'text-center mx-auto max-w-3xl sm:max-w-4xl'
+          ? 'mx-auto max-w-3xl text-center'
           : 'max-w-2xl'
       } ${className}`}
     >
-      {/* Eyebrow */}
       {eyebrow && (
         <span
-          className={`inline-block text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] mb-3 sm:mb-4 ${
+          className={`mb-3 inline-block text-xs font-semibold uppercase tracking-[0.18em] sm:mb-4 sm:text-sm ${
             light ? 'text-cefin-red/90' : 'text-cefin-red'
           }`}
         >
@@ -32,7 +31,6 @@ export default function SectionTitle({
         </span>
       )}
 
-      {/* Title */}
       <h2
         className={`${sizeClasses[size]} ${
           light ? 'text-white' : 'text-neutral-900'
@@ -41,10 +39,9 @@ export default function SectionTitle({
         {title}
       </h2>
 
-      {/* Subtitle */}
       {subtitle && (
         <p
-          className={`mt-4 sm:mt-5 md:mt-6 text-base sm:text-lg md:text-xl leading-relaxed ${
+          className={`mt-4 text-base leading-relaxed sm:mt-5 sm:text-lg lg:text-[1.1rem] ${
             centered ? 'mx-auto max-w-2xl' : ''
           } ${light ? 'text-neutral-300' : 'text-neutral-500'}`}
         >

@@ -39,83 +39,80 @@ export default function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-5rem)] overflow-hidden bg-white">
-        {/* Background */}
+      <section className="relative overflow-hidden bg-white">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-neutral-100 via-white to-white" />
         <div className="absolute top-0 right-0 h-full w-1/2 bg-gradient-to-l from-neutral-50/80 to-transparent" />
 
-        {/* Decorative elements */}
-        <div className="absolute top-1/4 left-1/4 h-72 w-72 sm:h-80 sm:w-80 lg:h-96 lg:w-96 rounded-full bg-cefin-red/5 blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 h-48 w-48 sm:h-56 sm:w-56 lg:h-64 lg:w-64 rounded-full bg-cefin-red/5 blur-2xl" />
+        <div className="absolute top-1/4 left-1/4 h-72 w-72 rounded-full bg-cefin-red/5 blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 h-52 w-52 rounded-full bg-cefin-red/5 blur-2xl" />
 
-        <div className="page-container relative py-12 sm:py-16 lg:py-20 xl:py-24">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+        <div className="page-container relative py-12 sm:py-16 lg:py-20">
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-14">
             {/* Text */}
-            <div className="order-2 lg:order-1 lg:col-span-6 xl:col-span-5">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-cefin-red/10 px-4 py-2">
+            <div className="order-2 lg:order-1 lg:col-span-6">
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-cefin-red/10 px-4 py-2">
                 <Sparkles className="h-4 w-4 text-cefin-red" />
-                <span className="text-xs sm:text-sm font-semibold text-cefin-red">
+                <span className="text-xs font-semibold text-cefin-red sm:text-sm">
                   Sistema Cobos™
                 </span>
               </div>
 
-              <h1 className="headline-xl mb-6 sm:mb-8 text-neutral-900">
+              <h1 className="mb-5 max-w-3xl text-5xl font-black leading-[0.95] tracking-tight text-neutral-900 sm:text-6xl lg:text-7xl xl:text-[5.2rem]">
                 Monetiza tu conocimiento y conviértelo en un{' '}
                 <span className="relative inline-block">
                   <span className="relative z-10 text-cefin-red">negocio real</span>
-                  <span className="absolute bottom-1 left-0 right-0 -z-0 h-3 sm:h-4 bg-cefin-red/10" />
+                  <span className="absolute bottom-1 left-0 right-0 -z-0 h-3 bg-cefin-red/10 sm:h-4" />
                 </span>
               </h1>
 
-              <p className="body-lg mb-8 sm:mb-10 max-w-xl">
+              <p className="mb-8 max-w-xl text-base leading-relaxed text-neutral-600 sm:text-lg lg:text-[1.35rem]">
                 Aprende a estructurar, vender y escalar lo que sabes con un
                 sistema claro y enfocado en resultados.
               </p>
 
-              <div className="mb-10 sm:mb-12 flex flex-col gap-4 sm:flex-row">
+              <div className="mb-8 flex flex-col gap-4 sm:flex-row">
                 <CTAButton
                   href="/clase-gratis"
                   variant="primary"
                   size="lg"
                   showArrow
-                  fullWidth={false}
                 >
                   Quiero registrarme a la clase gratis
                 </CTAButton>
               </div>
 
-              <div className="grid grid-cols-3 gap-3 border-t border-neutral-100 pt-6 sm:pt-8 sm:max-w-xl">
+              <div className="grid max-w-xl grid-cols-3 gap-3 border-t border-neutral-100 pt-6">
                 <div className="text-center sm:text-left">
-                  <p className="text-2xl sm:text-3xl font-bold text-neutral-900">
+                  <p className="text-2xl font-bold text-neutral-900 sm:text-3xl">
                     36K+
                   </p>
-                  <p className="text-xs sm:text-sm text-neutral-500">Alumnos</p>
+                  <p className="text-xs text-neutral-500 sm:text-sm">Alumnos</p>
                 </div>
 
-                <div className="border-l border-r border-neutral-200 px-2 text-center sm:text-left">
-                  <p className="text-2xl sm:text-3xl font-bold text-neutral-900">
+                <div className="border-x border-neutral-200 px-2 text-center sm:text-left">
+                  <p className="text-2xl font-bold text-neutral-900 sm:text-3xl">
                     $1M+
                   </p>
-                  <p className="text-xs sm:text-sm text-neutral-500">Generados</p>
+                  <p className="text-xs text-neutral-500 sm:text-sm">Generados</p>
                 </div>
 
                 <div className="text-center sm:text-left">
-                  <p className="text-2xl sm:text-3xl font-bold text-neutral-900">
+                  <p className="text-2xl font-bold text-neutral-900 sm:text-3xl">
                     5+
                   </p>
-                  <p className="text-xs sm:text-sm text-neutral-500">Años</p>
+                  <p className="text-xs text-neutral-500 sm:text-sm">Años</p>
                 </div>
               </div>
             </div>
 
             {/* Image */}
-            <div className="order-1 lg:order-2 lg:col-span-6 xl:col-span-7">
-              <div className="relative mx-auto max-w-sm sm:max-w-md lg:ml-auto lg:max-w-xl">
+            <div className="order-1 lg:order-2 lg:col-span-6">
+              <div className="relative mx-auto max-w-sm sm:max-w-md lg:ml-auto lg:max-w-lg">
                 <div className="relative aspect-[4/5]">
-                  <div className="absolute -inset-3 sm:-inset-4 rounded-[2rem] sm:rounded-[2.5rem] bg-gradient-to-br from-cefin-red/20 to-cefin-red/5 rotate-3" />
-                  <div className="absolute -inset-3 sm:-inset-4 rounded-[2rem] sm:rounded-[2.5rem] bg-gradient-to-tl from-neutral-200/50 to-transparent -rotate-2" />
+                  <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-cefin-red/20 to-cefin-red/5 rotate-3" />
+                  <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-tl from-neutral-200/50 to-transparent -rotate-2" />
 
-                  <div className="relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] shadow-2xl shadow-neutral-900/20">
+                  <div className="relative overflow-hidden rounded-[1.75rem] shadow-2xl shadow-neutral-900/20">
                     <Image
                       src="/images/alfredo-placa.jpg"
                       alt="Alfredo Cobos"
@@ -128,10 +125,10 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="mt-5 sm:mt-6 lg:absolute lg:-bottom-6 lg:left-0 lg:mt-0 lg:max-w-xs">
-                  <div className="rounded-2xl border border-neutral-100 bg-white p-5 sm:p-6 shadow-xl">
+                <div className="mt-5 lg:absolute lg:-bottom-5 lg:left-0 lg:mt-0 lg:max-w-[260px]">
+                  <div className="rounded-2xl border border-neutral-100 bg-white p-5 shadow-xl">
                     <p className="mb-1 text-sm text-neutral-500">Resultados reales</p>
-                    <p className="text-base sm:text-lg font-bold text-neutral-900">
+                    <p className="text-base font-bold text-neutral-900 sm:text-lg">
                       +250,000 USD en 7 meses
                     </p>
                     <p className="text-sm font-medium text-cefin-red">
@@ -148,7 +145,7 @@ export default function HomePage() {
       <AuthorityStrip />
 
       {/* PROBLEMA */}
-      <section className="section-padding bg-white">
+      <section className="bg-white py-16 lg:py-20">
         <div className="page-container">
           <SectionTitle
             eyebrow="El problema"
@@ -157,16 +154,16 @@ export default function HomePage() {
           />
 
           <div className="mx-auto max-w-4xl">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {problems.map((problem, index) => (
                 <div
                   key={index}
-                  className="group flex items-start gap-4 rounded-2xl border border-neutral-100 bg-neutral-50/80 p-5 sm:p-6 lg:p-7 transition-all duration-300 hover:border-transparent hover:bg-white hover:shadow-xl"
+                  className="group flex items-start gap-4 rounded-2xl border border-neutral-100 bg-neutral-50/80 p-5 transition-all duration-300 hover:border-transparent hover:bg-white hover:shadow-xl sm:p-6"
                 >
-                  <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl bg-red-100 transition-colors group-hover:bg-red-500">
-                    <X className="h-4 w-4 sm:h-5 sm:w-5 text-red-500 transition-colors group-hover:text-white" />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-100 transition-colors group-hover:bg-red-500 sm:h-12 sm:w-12">
+                    <X className="h-4 w-4 text-red-500 transition-colors group-hover:text-white sm:h-5 sm:w-5" />
                   </div>
-                  <p className="pt-1 text-sm sm:text-base lg:text-lg leading-relaxed text-neutral-700">
+                  <p className="pt-1 text-sm leading-relaxed text-neutral-700 sm:text-base lg:text-lg">
                     {problem}
                   </p>
                 </div>
@@ -177,7 +174,7 @@ export default function HomePage() {
       </section>
 
       {/* NUEVA VERDAD */}
-      <section className="section-padding gradient-dark relative overflow-hidden text-white">
+      <section className="gradient-dark relative overflow-hidden py-16 text-white lg:py-20">
         <div className="absolute inset-0 opacity-5">
           <div
             className="absolute inset-0"
@@ -189,16 +186,16 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="absolute top-0 left-1/4 h-72 w-72 sm:h-80 sm:w-80 lg:h-96 lg:w-96 rounded-full bg-cefin-red/20 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 h-52 w-52 sm:h-56 sm:w-56 lg:h-64 lg:w-64 rounded-full bg-cefin-red/10 blur-2xl" />
+        <div className="absolute top-0 left-1/4 h-72 w-72 rounded-full bg-cefin-red/20 blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 h-56 w-56 rounded-full bg-cefin-red/10 blur-2xl" />
 
         <div className="page-container relative">
           <div className="mx-auto max-w-5xl text-center">
-            <span className="mb-5 sm:mb-6 inline-block text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-cefin-red">
+            <span className="mb-5 inline-block text-xs font-semibold uppercase tracking-[0.18em] text-cefin-red sm:text-sm">
               La nueva verdad
             </span>
 
-            <h2 className="mb-8 sm:mb-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.08] tracking-tight">
+            <h2 className="mb-6 text-3xl font-bold leading-[1.08] tracking-tight sm:text-4xl lg:text-5xl xl:text-6xl">
               El problema no es tu conocimiento…
               <br className="hidden sm:block" />
               <span className="text-cefin-red">
@@ -206,7 +203,7 @@ export default function HomePage() {
               </span>
             </h2>
 
-            <p className="mx-auto mb-10 sm:mb-14 max-w-3xl text-base sm:text-lg lg:text-2xl leading-relaxed text-neutral-300">
+            <p className="mx-auto mb-10 max-w-3xl text-base leading-relaxed text-neutral-300 sm:text-lg lg:text-xl">
               Monetizar conocimiento no depende de tener más contenido.
               Depende de tener un sistema que te permita estructurar, vender y escalar lo que sabes.
             </p>
@@ -219,7 +216,7 @@ export default function HomePage() {
       </section>
 
       {/* SISTEMA */}
-      <section className="section-padding bg-white">
+      <section className="bg-white py-16 lg:py-20">
         <div className="page-container">
           <SectionTitle
             eyebrow="El sistema"
@@ -232,7 +229,7 @@ export default function HomePage() {
       </section>
 
       {/* PROCESO */}
-      <section className="section-padding bg-gradient-to-b from-neutral-50 to-white">
+      <section className="bg-gradient-to-b from-neutral-50 to-white py-16 lg:py-20">
         <div className="page-container">
           <SectionTitle
             eyebrow="El camino"
@@ -241,7 +238,7 @@ export default function HomePage() {
           />
           <ProcessSteps />
 
-          <div className="mt-12 sm:mt-16 lg:mt-20 text-center">
+          <div className="mt-12 text-center lg:mt-16">
             <CTAButton href="/clase-gratis" variant="primary" size="lg" showArrow>
               Empezar ahora
             </CTAButton>
@@ -250,16 +247,15 @@ export default function HomePage() {
       </section>
 
       {/* SOBRE ALFREDO */}
-      <section className="section-padding bg-white">
+      <section className="bg-white py-16 lg:py-20">
         <div className="page-container">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-24">
-            {/* Image */}
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
             <div className="relative">
-              <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-lg aspect-square">
-                <div className="absolute -inset-3 sm:-inset-4 rounded-[1.75rem] sm:rounded-[2rem] bg-gradient-to-br from-cefin-red/10 to-transparent -rotate-3" />
-                <div className="absolute -inset-3 sm:-inset-4 rounded-[1.75rem] sm:rounded-[2rem] bg-gradient-to-tl from-neutral-100 to-transparent rotate-2" />
+              <div className="relative mx-auto aspect-square max-w-sm sm:max-w-md lg:max-w-[480px]">
+                <div className="absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br from-cefin-red/10 to-transparent -rotate-3" />
+                <div className="absolute -inset-3 rounded-[1.75rem] bg-gradient-to-tl from-neutral-100 to-transparent rotate-2" />
 
-                <div className="relative overflow-hidden rounded-[1.25rem] sm:rounded-[1.5rem] shadow-2xl">
+                <div className="relative overflow-hidden rounded-[1.4rem] shadow-2xl">
                   <Image
                     src="/images/alfredo-hero.png"
                     alt="Alfredo Cobos"
@@ -271,17 +267,16 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Content */}
-            <div>
-              <span className="mb-4 inline-block text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-cefin-red">
+            <div className="max-w-xl">
+              <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.18em] text-cefin-red sm:text-sm">
                 Sobre mí
               </span>
 
-              <h2 className="headline-md mb-6 sm:mb-8 text-neutral-900">
+              <h2 className="mb-6 text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl lg:text-5xl">
                 Soy Alfredo Cobos
               </h2>
 
-              <div className="mb-8 sm:mb-10 space-y-4 sm:space-y-5 text-sm sm:text-base lg:text-lg leading-relaxed text-neutral-600">
+              <div className="mb-8 space-y-4 text-sm leading-relaxed text-neutral-600 sm:text-base lg:text-lg">
                 <p>
                   Durante años hice lo que la mayoría hace: enseñar, explicar, compartir valor…
                   pero sin una estructura clara para convertir eso en un negocio.
@@ -311,7 +306,7 @@ export default function HomePage() {
       </section>
 
       {/* TESTIMONIOS */}
-      <section className="section-padding bg-gradient-to-b from-neutral-50 to-white">
+      <section className="bg-gradient-to-b from-neutral-50 to-white py-16 lg:py-20">
         <div className="page-container">
           <SectionTitle
             eyebrow="Testimonios"
@@ -320,7 +315,7 @@ export default function HomePage() {
             size="large"
           />
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((testimonial, index) => (
               <TestimonialCard key={index} testimonial={testimonial} />
             ))}
@@ -329,7 +324,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="section-padding gradient-dark relative overflow-hidden text-white">
+      <section className="gradient-dark relative overflow-hidden py-16 text-white lg:py-20">
         <div className="absolute inset-0 opacity-5">
           <div
             className="absolute inset-0"
@@ -341,21 +336,21 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="absolute left-1/2 top-1/2 h-[420px] w-[420px] sm:h-[560px] sm:w-[560px] lg:h-[800px] lg:w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cefin-red/10 blur-3xl" />
+        <div className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cefin-red/10 blur-3xl sm:h-[520px] sm:w-[520px] lg:h-[680px] lg:w-[680px]" />
 
         <div className="page-container relative">
           <div className="mx-auto max-w-4xl text-center">
-            <span className="mb-5 sm:mb-6 inline-block text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-cefin-red">
+            <span className="mb-5 inline-block text-xs font-semibold uppercase tracking-[0.18em] text-cefin-red sm:text-sm">
               Empieza hoy
             </span>
 
-            <h2 className="mb-6 sm:mb-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+            <h2 className="mb-6 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
               Si ya sabes algo,
               <br />
               ya puedes empezar
             </h2>
 
-            <p className="mx-auto mb-10 sm:mb-12 max-w-2xl text-base sm:text-lg lg:text-2xl text-neutral-300">
+            <p className="mx-auto mb-10 max-w-2xl text-base text-neutral-300 sm:text-lg lg:text-xl">
               No necesitas más información. Necesitas estructura.
             </p>
 
