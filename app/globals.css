@@ -139,32 +139,125 @@
   }
 }
 
+/* =========================
+   ActiveCampaign Form Embed
+   ========================= */
+
 .ac-form-wrapper {
   width: 100%;
 }
 
-/* Quitar estilos default feos */
-.ac-form-wrapper form {
-  width: 100% !important;
-  margin: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
+.ac-form-wrapper,
+.ac-form-wrapper * {
+  box-sizing: border-box;
 }
 
-/* Inputs */
+.ac-form-wrapper ._form_179,
+.ac-form-wrapper form,
+.ac-form-wrapper ._form-content,
+.ac-form-wrapper ._html-code,
+.ac-form-wrapper ._form_element,
+.ac-form-wrapper ._button-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.ac-form-wrapper form {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+.ac-form-wrapper ._form-content {
+  margin: 0 !important;
+}
+
+.ac-form-wrapper ._form_element {
+  margin-bottom: 14px !important;
+}
+
+.ac-form-wrapper label {
+  display: block !important;
+  margin-bottom: 6px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #111827 !important;
+}
+
 .ac-form-wrapper input,
 .ac-form-wrapper textarea,
 .ac-form-wrapper select {
   width: 100% !important;
-  min-height: 48px !important;
+  min-height: 50px !important;
   border-radius: 12px !important;
-  padding: 12px !important;
+  padding: 12px 14px !important;
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+  border: 1px solid #e5e7eb !important;
+  background: #fff !important;
+  color: #111827 !important;
+  box-shadow: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
 }
 
-/* Botón */
+.ac-form-wrapper textarea {
+  min-height: 120px !important;
+}
+
+.ac-form-wrapper input:focus,
+.ac-form-wrapper textarea:focus,
+.ac-form-wrapper select:focus {
+  outline: none !important;
+  border-color: #c1121f !important;
+  box-shadow: 0 0 0 3px rgba(193, 18, 31, 0.12) !important;
+}
+
 .ac-form-wrapper button,
-.ac-form-wrapper ._submit {
+.ac-form-wrapper ._submit,
+.ac-form-wrapper input[type='submit'] {
   width: 100% !important;
+  min-height: 52px !important;
+  border: 0 !important;
   border-radius: 12px !important;
-  font-weight: 600 !important;
+  padding: 12px 16px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  background: #c1121f !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+.ac-form-wrapper ._form-thank-you {
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+  color: #111827 !important;
+}
+
+.ac-form-wrapper p,
+.ac-form-wrapper span,
+.ac-form-wrapper div {
+  max-width: 100% !important;
+}
+
+@media (max-width: 640px) {
+  .ac-form-wrapper {
+    width: 100%;
+  }
+
+  .ac-form-wrapper form {
+    padding: 0 !important;
+  }
+
+  .ac-form-wrapper input,
+  .ac-form-wrapper textarea,
+  .ac-form-wrapper select,
+  .ac-form-wrapper button,
+  .ac-form-wrapper ._submit {
+    font-size: 16px !important;
+  }
 }

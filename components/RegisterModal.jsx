@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, ReactNode } from "react";
+import { useEffect } from "react";
 import { X } from "lucide-react";
 
 /**
@@ -8,7 +8,7 @@ import { X } from "lucide-react";
  * @property {boolean} open
  * @property {() => void} onClose
  * @property {string} [title]
- * @property {ReactNode} children
+ * @property {import("react").ReactNode} children
  */
 
 /**
@@ -26,7 +26,7 @@ export default function RegisterModal({
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    const handleKeyDown = (/** @type {KeyboardEvent} */ event) => {
+    const handleKeyDown = (event) => {
       if (event.key === "Escape") onClose();
     };
 
@@ -41,7 +41,8 @@ export default function RegisterModal({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[999]">
+      {/* overlay */}
       <button
         type="button"
         aria-label="Cerrar modal"
@@ -49,28 +50,34 @@ export default function RegisterModal({
         onClick={onClose}
       />
 
-      <div className="relative z-10 w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl">
-        <div className="flex items-center justify-between border-b border-neutral-200 px-5 py-4 sm:px-6">
-          <div>
-            <h3 className="text-lg font-bold text-neutral-900 sm:text-xl">
-              {title}
-            </h3>
-            <p className="mt-1 text-sm text-neutral-500">
-              Regístrate y asegura tu acceso a la clase
-            </p>
+      {/* wrapper */}
+      <div className="relative z-10 flex min-h-full items-end justify-center p-3 sm:items-center sm:p-4">
+        <div className="flex max-h-[92dvh] w-full max-w-lg flex-col overflow-hidden rounded-2xl bg-white shadow-2xl sm:max-h-[88vh] sm:rounded-3xl">
+          {/* header */}
+          <div className="flex items-start justify-between gap-3 border-b border-neutral-200 px-4 py-4 sm:px-6">
+            <div className="min-w-0">
+              <h3 className="text-base font-bold leading-tight text-neutral-900 sm:text-xl">
+                {title}
+              </h3>
+              <p className="mt-1 text-xs leading-relaxed text-neutral-500 sm:text-sm">
+                Regístrate y asegura tu acceso a la clase
+              </p>
+            </div>
+
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Cerrar modal"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-neutral-700 transition hover:bg-neutral-200"
+            >
+              <X className="h-5 w-5" />
+            </button>
           </div>
 
-          <button
-            type="button"
-            onClick={onClose}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-700 transition hover:bg-neutral-200"
-          >
-            <X className="h-5 w-5" />
-          </button>
-        </div>
-
-        <div className="max-h-[85vh] overflow-y-auto px-5 py-5 sm:px-6 sm:py-6">
-          {children}
+          {/* body */}
+          <div className="flex-1 overflow-y-auto px-4 py-4 sm:px-6 sm:py-6">
+            {children}
+          </div>
         </div>
       </div>
     </div>
