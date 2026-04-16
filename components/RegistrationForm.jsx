@@ -40,7 +40,18 @@ export default function RegistrationForm({
 
       console.log('Form submitted:', formData);
 
+      // Disparar evento de conversión para Meta Pixel
+      if (typeof window !== 'undefined' && typeof window.fbq) {
+        window.fbq('track', 'Lead', {
+          content_name: 'Sistema Cobos - Registro',
+          status: 'success',
+        });
+
+        window.fbq("track", "CompleteRegistration");
+      }
+
       setSubmitted(true);
+
     } catch (error) {
       console.error('Error al enviar formulario:', error);
       setErrorMessage('Hubo un error al enviar tu registro. Inténtalo de nuevo.');
