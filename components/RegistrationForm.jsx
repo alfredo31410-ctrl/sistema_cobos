@@ -1,24 +1,24 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { CheckCircle, ArrowRight, Loader2 } from 'lucide-react';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { CheckCircle, ArrowRight, Loader2 } from "lucide-react";
 
 export default function RegistrationForm({
-  buttonText = 'Quiero mi lugar',
-  variant = 'default',
+  buttonText = "Quiero mi lugar",
+  variant = "default",
 }) {
   const [formData, setFormData] = useState({
-    nombre: '',
-    whatsapp: '',
-    correo: '',
+    nombre: "",
+    whatsapp: "",
+    correo: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,29 +32,18 @@ export default function RegistrationForm({
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setErrorMessage('');
+    setErrorMessage("");
 
     try {
       // Simulación temporal de envío
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      console.log('Form submitted:', formData);
-
-      // Disparar evento de conversión para Meta Pixel
-      if (typeof window !== 'undefined' && typeof window.fbq) {
-        window.fbq('track', 'Lead', {
-          content_name: 'Sistema Cobos - Registro',
-          status: 'success',
-        });
-
-        window.fbq("track", "CompleteRegistration");
-      }
+      console.log("Form submitted:", formData);
 
       setSubmitted(true);
-
     } catch (error) {
-      console.error('Error al enviar formulario:', error);
-      setErrorMessage('Hubo un error al enviar tu registro. Inténtalo de nuevo.');
+      console.error("Error al enviar formulario:", error);
+      setErrorMessage("Hubo un error al enviar tu registro. Inténtalo de nuevo.");
     } finally {
       setLoading(false);
     }
@@ -63,33 +52,33 @@ export default function RegistrationForm({
   if (submitted) {
     return (
       <div
-        className={`rounded-3xl p-6 sm:p-8 md:p-10 text-center ${
-          variant === 'dark' ? 'bg-neutral-800/50' : 'bg-green-50'
+        className={`rounded-3xl p-6 text-center sm:p-8 md:p-10 ${
+          variant === "dark" ? "bg-neutral-800/50" : "bg-green-50"
         }`}
       >
         <div
-          className={`mx-auto mb-5 flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full ${
-            variant === 'dark' ? 'bg-green-500/20' : 'bg-green-100'
+          className={`mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full sm:h-20 sm:w-20 ${
+            variant === "dark" ? "bg-green-500/20" : "bg-green-100"
           }`}
         >
           <CheckCircle
             className={`h-8 w-8 sm:h-10 sm:w-10 ${
-              variant === 'dark' ? 'text-green-400' : 'text-green-600'
+              variant === "dark" ? "text-green-400" : "text-green-600"
             }`}
           />
         </div>
 
         <h3
-          className={`text-xl sm:text-2xl font-bold mb-2 ${
-            variant === 'dark' ? 'text-white' : 'text-neutral-900'
+          className={`mb-2 text-xl font-bold sm:text-2xl ${
+            variant === "dark" ? "text-white" : "text-neutral-900"
           }`}
         >
           ¡Registro exitoso!
         </h3>
 
         <p
-          className={`text-sm sm:text-base leading-relaxed ${
-            variant === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
+          className={`text-sm leading-relaxed sm:text-base ${
+            variant === "dark" ? "text-neutral-300" : "text-neutral-600"
           }`}
         >
           Revisa tu correo para más información.
@@ -99,17 +88,17 @@ export default function RegistrationForm({
   }
 
   const inputBase =
-    'h-12 sm:h-14 rounded-xl px-4 sm:px-5 text-sm sm:text-base transition-all duration-200 focus:ring-2 focus:ring-offset-2';
+    "h-12 rounded-xl px-4 text-sm transition-all duration-200 focus:ring-2 focus:ring-offset-2 sm:h-14 sm:px-5 sm:text-base";
 
   const inputStyles =
-    variant === 'dark'
+    variant === "dark"
       ? `${inputBase} bg-white/10 border-white/10 text-white placeholder:text-neutral-400 focus:bg-white/15 focus:border-white/20 focus:ring-cefin-red`
       : `${inputBase} bg-white border-neutral-200 text-neutral-900 placeholder:text-neutral-400 focus:border-cefin-red focus:ring-cefin-red/20`;
 
   const labelStyles =
-    variant === 'dark'
-      ? 'text-sm sm:text-base font-medium text-neutral-200'
-      : 'text-sm sm:text-base font-medium text-neutral-700';
+    variant === "dark"
+      ? "text-sm font-medium text-neutral-200 sm:text-base"
+      : "text-sm font-medium text-neutral-700 sm:text-base";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
@@ -170,7 +159,7 @@ export default function RegistrationForm({
       <Button
         type="submit"
         disabled={loading}
-        className="mt-2 sm:mt-4 h-12 sm:h-14 w-full rounded-xl bg-cefin-red text-sm sm:text-base lg:text-lg font-semibold text-white shadow-lg shadow-cefin-red/25 transition-all duration-300 hover:bg-cefin-red-dark hover:shadow-xl hover:shadow-cefin-red/30 disabled:opacity-70"
+        className="mt-2 h-12 w-full rounded-xl bg-cefin-red text-sm font-semibold text-white shadow-lg shadow-cefin-red/25 transition-all duration-300 hover:bg-cefin-red-dark hover:shadow-xl hover:shadow-cefin-red/30 disabled:opacity-70 sm:mt-4 sm:h-14 sm:text-base lg:text-lg"
       >
         {loading ? (
           <Loader2 className="h-5 w-5 animate-spin" />

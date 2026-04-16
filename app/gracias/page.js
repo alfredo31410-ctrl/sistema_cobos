@@ -4,23 +4,22 @@ import Link from "next/link";
 import { useEffect } from "react";
 import CTAButton from "@/components/CTAButton";
 import { track } from "@/lib/meta-pixel";
-import {
-  CheckCircle2,
-  ArrowRight,
-  ShieldCheck,
-} from "lucide-react";
+import { CheckCircle2, ArrowRight, ShieldCheck } from "lucide-react";
 
 export default function GraciasPage() {
   const whatsappUrl = "https://chat.whatsapp.com/BaOgaoB8evPDvTdJvOkkFS";
 
-useEffect(() => {
-  track("CompleteRegistration", {
-    content_name: "Registro clase gratuita",
-    content_category: "Lead",
-  });
-}, []);
+  useEffect(() => {
+    track("Lead", {
+      content_name: "Sistema Cobos | Registro (Lead)",
+      content_category: "Registro",
+    });
 
-const handleWhatsAppClick = () => {};
+    track("CompleteRegistration", {
+      content_name: "Sistema Cobos | Registro (CompleteRegistration)",
+      content_category: "Registro",
+    });
+  }, []);
 
   return (
     <>
@@ -47,25 +46,28 @@ const handleWhatsAppClick = () => {};
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-neutral-300 sm:text-base lg:text-lg">
               Solo te falta un paso importante para recibir recordatorios,
               materiales y el enlace clave de acceso:
-              <span className="font-semibold text-white"> entrar al grupo de WhatsApp.</span>
+              <span className="font-semibold text-white">
+                {" "}
+                entrar al grupo de WhatsApp.
+              </span>
             </p>
 
             <div className="mx-auto mb-6 max-w-2xl rounded-2xl border border-cefin-red/30 bg-white/5 p-4 sm:rounded-3xl sm:p-5">
               <p className="text-sm font-semibold text-white sm:text-base">
-                ⚠️ Si no entras al grupo, podrías perder avisos importantes antes de la clase.
+                ⚠️ Si no entras al grupo, podrías perder avisos importantes
+                antes de la clase.
               </p>
             </div>
 
             <div className="flex flex-col items-center justify-center gap-4">
               <CTAButton
-  href={whatsappUrl}
-  variant="primary"
-  size="lg"
-  showArrow
-  onClick={() => handleWhatsAppClick("hero")}
->
-  Entrar al grupo de WhatsApp ahora
-</CTAButton>
+                href={whatsappUrl}
+                variant="primary"
+                size="lg"
+                showArrow
+              >
+                Entrar al grupo de WhatsApp ahora
+              </CTAButton>
 
               <p className="text-xs text-neutral-400 sm:text-sm">
                 Último paso para completar tu acceso
@@ -83,19 +85,19 @@ const handleWhatsAppClick = () => {};
             </h2>
 
             <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-neutral-300 sm:text-base lg:text-lg">
-              Da clic aquí y entra al grupo de WhatsApp para recibir todo lo necesario antes de la clase.
+              Da clic aquí y entra al grupo de WhatsApp para recibir todo lo
+              necesario antes de la clase.
             </p>
 
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <CTAButton
-  href={whatsappUrl}
-  variant="primary"
-  size="lg"
-  showArrow
-  onClick={() => handleWhatsAppClick("secondary_cta")}
->
-  Sí, quiero entrar al grupo
-</CTAButton>
+                href={whatsappUrl}
+                variant="primary"
+                size="lg"
+                showArrow
+              >
+                Sí, quiero entrar al grupo
+              </CTAButton>
 
               <CTAButton href="/" variant="outlineLight" size="lg">
                 Volver al inicio
@@ -113,8 +115,9 @@ const handleWhatsAppClick = () => {};
             </h3>
 
             <p className="mb-6 text-sm text-neutral-600 sm:text-base lg:text-lg">
-              Revisa spam, promociones o correo no deseado. Pero recuerda:
-              la vía más importante para no perderte nada es entrar al grupo de WhatsApp.
+              Revisa spam, promociones o correo no deseado. Pero recuerda: la
+              vía más importante para no perderte nada es entrar al grupo de
+              WhatsApp.
             </p>
 
             <Link
