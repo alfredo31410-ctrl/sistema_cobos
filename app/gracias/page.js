@@ -6,9 +6,7 @@ import CTAButton from "@/components/CTAButton";
 import { track } from "@/lib/meta-pixel";
 import {
   CheckCircle2,
-  MessageCircle,
   ArrowRight,
-  Clock,
   ShieldCheck,
 } from "lucide-react";
 
