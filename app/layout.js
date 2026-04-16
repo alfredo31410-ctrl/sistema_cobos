@@ -14,6 +14,9 @@ export const metadata = {
     'educación online',
     'emprendimiento digital',
   ],
+  verification: {
+    facebook: 'njvp5g2nwoz5jr3g7s1691iimhesyj',
+  },
 };
 
 export default function RootLayout({ children }) {
