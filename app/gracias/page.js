@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import CTAButton from "@/components/CTAButton";
-import { track, trackCustom } from "@/lib/meta-pixel";
+import { track } from "@/lib/meta-pixel";
 import {
   CheckCircle2,
   MessageCircle,
@@ -15,27 +15,14 @@ import {
 export default function GraciasPage() {
   const whatsappUrl = "https://chat.whatsapp.com/BaOgaoB8evPDvTdJvOkkFS";
 
-  useEffect(() => {
-    track("Lead", {
-      content_name: "Registro clase gratuita",
-      content_category: "Lead",
-    });
+useEffect(() => {
+  track("CompleteRegistration", {
+    content_name: "Registro clase gratuita",
+    content_category: "Lead",
+  });
+}, []);
 
-    trackCustom("ThankYouPageView", {
-      page: "gracias",
-    });
-  }, []);
-
-  const handleWhatsAppClick = (location) => {
-    track("Contact", {
-      content_name: "WhatsApp Group Join",
-    });
-
-    trackCustom("ClickWhatsAppGroup", {
-      location,
-      destination: "grupo_whatsapp",
-    });
-  };
+const handleWhatsAppClick = () => {};
 
   return (
     <>
