@@ -188,7 +188,7 @@ export default function ClaseGratisPage() {
               {/* Fecha y hora */}
               <div className="mt-7">
                 <h2 className="text-3xl font-black uppercase italic leading-none text-red-500 sm:text-4xl lg:text-5xl xl:text-6xl">
-                  Martes 22 de abril
+                  Miercoles 22 de abril
                 </h2>
 
                 <p className="mt-3 flex items-center gap-2 text-xl font-bold text-white sm:text-2xl">
