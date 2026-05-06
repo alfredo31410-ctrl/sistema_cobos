@@ -186,7 +186,7 @@
   color: #111827 !important;
 }
 
-/* 🔥 SOLO INPUTS REALES (NO checkbox/radio) */
+/* Solo inputs reales */
 .ac-form-wrapper input:not([type='checkbox']):not([type='radio']):not([type='hidden']),
 .ac-form-wrapper textarea,
 .ac-form-wrapper select {
@@ -216,7 +216,7 @@
   box-shadow: 0 0 0 3px rgba(193, 18, 31, 0.12) !important;
 }
 
-/* 🔥 CHECKBOX Y RADIO BIEN FORMADOS */
+/* Checkbox y radio */
 .ac-form-wrapper input[type='checkbox'],
 .ac-form-wrapper input[type='radio'] {
   width: 18px !important;
@@ -235,7 +235,7 @@
   vertical-align: top !important;
 }
 
-/* botón */
+/* Botón */
 .ac-form-wrapper button,
 .ac-form-wrapper ._submit,
 .ac-form-wrapper input[type='submit'] {
@@ -265,7 +265,6 @@
   max-width: 100% !important;
 }
 
-/* MOBILE FIX */
 @media (max-width: 640px) {
   .ac-form-wrapper form {
     padding: 0 !important;

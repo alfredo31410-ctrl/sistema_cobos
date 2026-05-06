@@ -66,8 +66,7 @@ export default function Navbar() {
         }`}
       >
         <div className="page-container">
-          <div className="flex h-16 lg:h-20 items-center justify-between gap-4">
-            {/* Logo */}
+          <div className="flex h-16 items-center justify-between gap-4 lg:h-20">
             <Link
               href="/"
               className="shrink-0 text-lg font-bold tracking-tight text-neutral-900 sm:text-xl lg:text-2xl"
@@ -76,8 +75,7 @@ export default function Navbar() {
               Alfredo <span className="text-cefin-red">Cobos</span>
             </Link>
 
-            {/* Desktop nav */}
-            <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+            <div className="hidden items-center gap-1 lg:flex xl:gap-2">
               {navLinks.map((link) => {
                 const active = isActive(link.href);
 
@@ -97,17 +95,15 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center">
+            <div className="hidden items-center lg:flex">
               <Link href="/clase-gratis">
                 <Button className="h-11 rounded-full bg-cefin-red px-5 text-sm font-semibold text-white shadow-lg shadow-cefin-red/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-cefin-red-dark hover:shadow-xl hover:shadow-cefin-red/25 xl:px-6">
-                  Quiero registrarme
+                  Ver clase gratis
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
             </div>
 
-            {/* Mobile button */}
             <button
               type="button"
               className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 bg-white text-neutral-900 transition hover:bg-neutral-50 lg:hidden"
@@ -116,20 +112,14 @@ export default function Navbar() {
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
             >
-              {isOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Spacer */}
       <div className="h-16 lg:h-20" />
 
-      {/* Mobile overlay */}
       <div
         className={`fixed inset-0 z-40 bg-black/30 transition-opacity duration-300 lg:hidden ${
           isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
@@ -138,7 +128,6 @@ export default function Navbar() {
         aria-hidden="true"
       />
 
-      {/* Mobile panel */}
       <div
         id="mobile-menu"
         className={`fixed left-0 right-0 top-16 z-50 border-t border-neutral-200 bg-white shadow-2xl transition-all duration-300 lg:hidden ${
@@ -172,7 +161,7 @@ export default function Navbar() {
           <div className="mt-5 border-t border-neutral-200 pt-5">
             <Link href="/clase-gratis" onClick={() => setIsOpen(false)}>
               <Button className="h-12 w-full rounded-full bg-cefin-red text-base font-semibold text-white shadow-lg shadow-cefin-red/20 transition-all duration-300 hover:bg-cefin-red-dark">
-                Quiero registrarme
+                Ver clase gratis
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>

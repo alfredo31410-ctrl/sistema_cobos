@@ -150,11 +150,7 @@ export default function RegistrationForm({
         />
       </div>
 
-      {errorMessage && (
-        <p className="text-sm leading-relaxed text-red-500">
-          {errorMessage}
-        </p>
-      )}
+      {errorMessage && <p className="text-sm leading-relaxed text-red-500">{errorMessage}</p>}
 
       <Button
         type="submit"

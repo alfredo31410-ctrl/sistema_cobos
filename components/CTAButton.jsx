@@ -13,8 +13,7 @@ export default function CTAButton({
   onClick,
   ...props
 }) {
-  const isExternal =
-    href?.startsWith('http') || href?.startsWith('https');
+  const isExternal = href?.startsWith('http') || href?.startsWith('https');
 
   const variants = {
     primary:
@@ -25,10 +24,8 @@ export default function CTAButton({
       'border-2 border-neutral-900 bg-transparent text-neutral-900 hover:bg-neutral-900 hover:text-white',
     outlineLight:
       'border-2 border-white/30 bg-transparent text-white backdrop-blur-sm hover:bg-white hover:text-neutral-900',
-    ghost:
-      'bg-transparent text-neutral-900 hover:bg-neutral-100',
-    ghostLight:
-      'bg-transparent text-white hover:bg-white/10',
+    ghost: 'bg-transparent text-neutral-900 hover:bg-neutral-100',
+    ghostLight: 'bg-transparent text-white hover:bg-white/10',
   };
 
   const sizes = {
@@ -58,7 +55,6 @@ export default function CTAButton({
     </>
   );
 
-  // 🔥 LINK EXTERNO (WhatsApp, Hotmart, etc.)
   if (href && isExternal) {
     return (
       <a
@@ -75,13 +71,9 @@ export default function CTAButton({
     );
   }
 
-  // 🔹 LINK INTERNO
   if (href) {
     return (
-      <Link
-        href={href}
-        className={fullWidth ? 'block w-full' : 'inline-flex'}
-      >
+      <Link href={href} className={fullWidth ? 'block w-full' : 'inline-flex'}>
         <Button className={buttonClassName} {...props} onClick={onClick}>
           {content}
         </Button>
@@ -89,7 +81,6 @@ export default function CTAButton({
     );
   }
 
-  // 🔹 BOTÓN NORMAL
   return (
     <Button className={buttonClassName} {...props} onClick={onClick}>
       {content}

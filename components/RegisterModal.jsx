@@ -42,7 +42,6 @@ export default function RegisterModal({
 
   return (
     <div className="fixed inset-0 z-[999]">
-      {/* overlay */}
       <button
         type="button"
         aria-label="Cerrar modal"
@@ -50,10 +49,8 @@ export default function RegisterModal({
         onClick={onClose}
       />
 
-      {/* wrapper */}
       <div className="relative z-10 flex min-h-full items-end justify-center p-3 sm:items-center sm:p-4">
         <div className="flex max-h-[92dvh] w-full max-w-lg flex-col overflow-hidden rounded-2xl bg-white shadow-2xl sm:max-h-[88vh] sm:rounded-3xl">
-          {/* header */}
           <div className="flex items-start justify-between gap-3 border-b border-neutral-200 px-4 py-4 sm:px-6">
             <div className="min-w-0">
               <h3 className="text-base font-bold leading-tight text-neutral-900 sm:text-xl">
@@ -74,7 +71,6 @@ export default function RegisterModal({
             </button>
           </div>
 
-          {/* body */}
           <div className="flex-1 overflow-y-auto px-4 py-4 sm:px-6 sm:py-6">
             {children}
           </div>

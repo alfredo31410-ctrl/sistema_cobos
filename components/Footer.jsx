@@ -37,18 +37,16 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="bg-cefin-dark text-white">
-      {/* Main footer */}
       <div className="page-container py-14 sm:py-16 lg:py-20">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
-          {/* Brand */}
           <div className="lg:col-span-5">
             <Link href="/" className="inline-block">
-              <span className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+              <span className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
                 Alfredo <span className="text-cefin-red">Cobos</span>
               </span>
             </Link>
 
-            <p className="mt-5 max-w-md text-sm sm:text-base lg:text-lg leading-relaxed text-neutral-400">
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-neutral-400 sm:text-base lg:text-lg">
               Ayudo a personas a convertir su conocimiento en un negocio real
               con estructura, estrategia y dirección.
             </p>
@@ -69,9 +67,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Navigation */}
           <div className="md:col-span-1 lg:col-span-3 lg:col-start-7">
-            <h4 className="mb-5 text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
+            <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 sm:text-sm">
               Navegación
             </h4>
 
@@ -80,7 +77,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="group inline-flex items-center text-sm sm:text-base text-neutral-400 transition-colors duration-200 hover:text-white"
+                    className="group inline-flex items-center text-sm text-neutral-400 transition-colors duration-200 hover:text-white sm:text-base"
                   >
                     <span>{link.label}</span>
                     <ArrowUpRight className="ml-1.5 h-4 w-4 translate-x-0 translate-y-0 opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
@@ -90,9 +87,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
           <div className="md:col-span-1 lg:col-span-3">
-            <h4 className="mb-5 text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
+            <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500 sm:text-sm">
               Legal
             </h4>
 
@@ -101,7 +97,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm sm:text-base text-neutral-400 transition-colors duration-200 hover:text-white"
+                    className="text-sm text-neutral-400 transition-colors duration-200 hover:text-white sm:text-base"
                   >
                     {link.label}
                   </Link>
@@ -112,15 +108,14 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="page-container py-5 sm:py-6">
           <div className="flex flex-col gap-2 text-center md:flex-row md:items-center md:justify-between md:text-left">
-            <p className="text-xs sm:text-sm text-neutral-500">
+            <p className="text-xs text-neutral-500 sm:text-sm">
               © {new Date().getFullYear()} Alfredo Cobos. Todos los derechos reservados.
             </p>
 
-            <p className="text-xs sm:text-sm text-neutral-600">
+            <p className="text-xs text-neutral-600 sm:text-sm">
               Diseñado para transformar conocimiento en negocio.
             </p>
           </div>

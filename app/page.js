@@ -38,17 +38,15 @@ const problems = [
 export default function HomePage() {
   return (
     <>
-      {/* HERO */}
       <section className="relative overflow-hidden bg-white">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-neutral-100 via-white to-white" />
-        <div className="absolute top-0 right-0 h-full w-1/2 bg-gradient-to-l from-neutral-50/80 to-transparent" />
+        <div className="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-neutral-50/80 to-transparent" />
 
-        <div className="absolute top-1/4 left-1/4 h-72 w-72 rounded-full bg-cefin-red/5 blur-3xl" />
+        <div className="absolute left-1/4 top-1/4 h-72 w-72 rounded-full bg-cefin-red/5 blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 h-52 w-52 rounded-full bg-cefin-red/5 blur-2xl" />
 
         <div className="page-container relative py-12 sm:py-16 lg:py-20">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-14">
-            {/* Text */}
             <div className="order-2 lg:order-1 lg:col-span-6">
               <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-cefin-red/10 px-4 py-2">
                 <Sparkles className="h-4 w-4 text-cefin-red" />
@@ -60,7 +58,9 @@ export default function HomePage() {
               <h1 className="mb-5 max-w-3xl text-5xl font-black leading-[0.95] tracking-tight text-neutral-900 sm:text-6xl lg:text-7xl xl:text-[5.2rem]">
                 Monetiza tu conocimiento y conviértelo en un{' '}
                 <span className="relative inline-block">
-                  <span className="relative z-10 text-cefin-red">negocio real</span>
+                  <span className="relative z-10 text-cefin-red">
+                    negocio real
+                  </span>
                   <span className="absolute bottom-1 left-0 right-0 -z-0 h-3 bg-cefin-red/10 sm:h-4" />
                 </span>
               </h1>
@@ -77,7 +77,7 @@ export default function HomePage() {
                   size="lg"
                   showArrow
                 >
-                  Quiero registrarme a la clase gratis
+                  Ver clase gratis
                 </CTAButton>
               </div>
 
@@ -93,7 +93,9 @@ export default function HomePage() {
                   <p className="text-2xl font-bold text-neutral-900 sm:text-3xl">
                     $1M+
                   </p>
-                  <p className="text-xs text-neutral-500 sm:text-sm">Generados</p>
+                  <p className="text-xs text-neutral-500 sm:text-sm">
+                    Generados
+                  </p>
                 </div>
 
                 <div className="text-center sm:text-left">
@@ -105,12 +107,11 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Image */}
             <div className="order-1 lg:order-2 lg:col-span-6">
               <div className="relative mx-auto max-w-sm sm:max-w-md lg:ml-auto lg:max-w-lg">
                 <div className="relative aspect-[4/5]">
-                  <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-cefin-red/20 to-cefin-red/5 rotate-3" />
-                  <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-tl from-neutral-200/50 to-transparent -rotate-2" />
+                  <div className="absolute -inset-3 rotate-3 rounded-[2rem] bg-gradient-to-br from-cefin-red/20 to-cefin-red/5" />
+                  <div className="absolute -inset-3 -rotate-2 rounded-[2rem] bg-gradient-to-tl from-neutral-200/50 to-transparent" />
 
                   <div className="relative overflow-hidden rounded-[1.75rem] shadow-2xl shadow-neutral-900/20">
                     <Image
@@ -127,7 +128,9 @@ export default function HomePage() {
 
                 <div className="mt-5 lg:absolute lg:-bottom-5 lg:left-0 lg:mt-0 lg:max-w-[260px]">
                   <div className="rounded-2xl border border-neutral-100 bg-white p-5 shadow-xl">
-                    <p className="mb-1 text-sm text-neutral-500">Resultados reales</p>
+                    <p className="mb-1 text-sm text-neutral-500">
+                      Resultados reales
+                    </p>
                     <p className="text-base font-bold text-neutral-900 sm:text-lg">
                       +250,000 USD en 7 meses
                     </p>
@@ -144,7 +147,6 @@ export default function HomePage() {
 
       <AuthorityStrip />
 
-      {/* PROBLEMA */}
       <section className="bg-white py-16 lg:py-20">
         <div className="page-container">
           <SectionTitle
@@ -173,7 +175,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* NUEVA VERDAD */}
       <section className="gradient-dark relative overflow-hidden py-16 text-white lg:py-20">
         <div className="absolute inset-0 opacity-5">
           <div
@@ -186,7 +187,7 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="absolute top-0 left-1/4 h-72 w-72 rounded-full bg-cefin-red/20 blur-3xl" />
+        <div className="absolute left-1/4 top-0 h-72 w-72 rounded-full bg-cefin-red/20 blur-3xl" />
         <div className="absolute bottom-0 right-1/4 h-56 w-56 rounded-full bg-cefin-red/10 blur-2xl" />
 
         <div className="page-container relative">
@@ -199,23 +200,24 @@ export default function HomePage() {
               El problema no es tu conocimiento…
               <br className="hidden sm:block" />
               <span className="text-cefin-red">
-                {' '}es que no está estructurado para venderse
+                {' '}
+                es que no está estructurado para venderse
               </span>
             </h2>
 
             <p className="mx-auto mb-10 max-w-3xl text-base leading-relaxed text-neutral-300 sm:text-lg lg:text-xl">
               Monetizar conocimiento no depende de tener más contenido.
-              Depende de tener un sistema que te permita estructurar, vender y escalar lo que sabes.
+              Depende de tener un sistema que te permita estructurar, vender y
+              escalar lo que sabes.
             </p>
 
             <CTAButton href="/clase-gratis" variant="outlineLight" size="xl" showArrow>
-              Accede a la clase gratuita
+              Ver la clase gratuita
             </CTAButton>
           </div>
         </div>
       </section>
 
-      {/* SISTEMA */}
       <section className="bg-white py-16 lg:py-20">
         <div className="page-container">
           <SectionTitle
@@ -228,7 +230,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PROCESO */}
       <section className="bg-gradient-to-b from-neutral-50 to-white py-16 lg:py-20">
         <div className="page-container">
           <SectionTitle
@@ -246,14 +247,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SOBRE ALFREDO */}
       <section className="bg-white py-16 lg:py-20">
         <div className="page-container">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
             <div className="relative">
               <div className="relative mx-auto aspect-square max-w-sm sm:max-w-md lg:max-w-[480px]">
-                <div className="absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br from-cefin-red/10 to-transparent -rotate-3" />
-                <div className="absolute -inset-3 rounded-[1.75rem] bg-gradient-to-tl from-neutral-100 to-transparent rotate-2" />
+                <div className="absolute -inset-3 -rotate-3 rounded-[1.75rem] bg-gradient-to-br from-cefin-red/10 to-transparent" />
+                <div className="absolute -inset-3 rotate-2 rounded-[1.75rem] bg-gradient-to-tl from-neutral-100 to-transparent" />
 
                 <div className="relative overflow-hidden rounded-[1.4rem] shadow-2xl">
                   <Image
@@ -278,22 +278,24 @@ export default function HomePage() {
 
               <div className="mb-8 space-y-4 text-sm leading-relaxed text-neutral-600 sm:text-base lg:text-lg">
                 <p>
-                  Durante años hice lo que la mayoría hace: enseñar, explicar, compartir valor…
-                  pero sin una estructura clara para convertir eso en un negocio.
+                  Durante años hice lo que la mayoría hace: enseñar, explicar,
+                  compartir valor… pero sin una estructura clara para convertir
+                  eso en un negocio.
                 </p>
                 <p>
                   Hasta que entendí algo:{' '}
                   <strong className="font-semibold text-neutral-900">
-                    el conocimiento por sí solo no genera ingresos.
-                    Necesita estructura, estrategia y dirección.
+                    el conocimiento por sí solo no genera ingresos. Necesita
+                    estructura, estrategia y dirección.
                   </strong>
                 </p>
                 <p>
-                  A partir de ahí, dejé de solo enseñar… y empecé a construir un sistema.
+                  A partir de ahí, dejé de solo enseñar… y empecé a construir
+                  un sistema.
                 </p>
                 <p>
-                  Hoy ayudo a personas a hacer lo mismo: tomar lo que ya saben, estructurarlo
-                  correctamente y convertirlo en un negocio real.
+                  Hoy ayudo a personas a hacer lo mismo: tomar lo que ya saben,
+                  estructurarlo correctamente y convertirlo en un negocio real.
                 </p>
               </div>
 
@@ -305,7 +307,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIOS */}
       <section className="bg-gradient-to-b from-neutral-50 to-white py-16 lg:py-20">
         <div className="page-container">
           <SectionTitle
@@ -323,7 +324,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA FINAL */}
       <section className="gradient-dark relative overflow-hidden py-16 text-white lg:py-20">
         <div className="absolute inset-0 opacity-5">
           <div
@@ -355,7 +355,7 @@ export default function HomePage() {
             </p>
 
             <CTAButton href="/clase-gratis" variant="primary" size="xl" showArrow>
-              Quiero entrar a la clase gratis
+              Ver la clase gratis
             </CTAButton>
           </div>
         </div>
