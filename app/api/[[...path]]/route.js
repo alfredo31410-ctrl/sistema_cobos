@@ -47,6 +47,16 @@ async function handleRoute(request, { params }) {
       return handleCORS(NextResponse.json({ message: 'Hello World' }));
     }
 
+    if (route === '/health' && method === 'GET') {
+      return handleCORS(
+        NextResponse.json({
+          ok: true,
+          service: 'sistema-cobos-api',
+          timestamp: new Date().toISOString(),
+        })
+      );
+    }
+
     if (route === '/status' && method === 'POST') {
       const database = await connectToMongo();
       const body = await request.json();
