@@ -511,7 +511,7 @@ export default function ClaseGratisPage() {
                 {EVENT_TIME}. Regístrate para recibir el acceso y los recordatorios.
               </p>
 
-              <div className="overflow-hidden rounded-2xl bg-white text-left shadow-xl">
+              <div className="text-left">
                 <ActiveCampaignForm />
               </div>
             </div>
