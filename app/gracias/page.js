@@ -1,132 +1,127 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect } from "react";
 import CTAButton from "@/components/CTAButton";
 import { track } from "@/lib/meta-pixel";
-import { CheckCircle2, ArrowRight, ShieldCheck } from "lucide-react";
+import {
+  CalendarDays,
+  CheckCircle2,
+  Clock,
+  MessageCircle,
+  ShieldCheck,
+} from "lucide-react";
 
 export default function GraciasPage() {
-  const whatsappUrl = "https://chat.whatsapp.com/BaOgaoB8evPDvTdJvOkkFS";
+  const whatsappUrl = "https://chat.whatsapp.com/EPMecVkKKKH5Ac5INEBIkj";
 
   useEffect(() => {
-    track("Lead", {
-      content_name: "Sistema Cobos | Registro (Lead)",
-      content_category: "Registro",
-    });
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("registro") !== "clase-gratis") return;
 
     track("CompleteRegistration", {
-      content_name: "Sistema Cobos | Registro (CompleteRegistration)",
-      content_category: "Registro",
+      content_name: "Clase Gratis - Monetiza tu Conocimiento",
+      content_category: "Clase gratuita",
+      content_type: "event",
     });
   }, []);
 
   return (
     <>
-      <section className="relative overflow-hidden bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-800 text-white">
-        <div className="page-container relative py-14 sm:py-20 lg:py-24">
+      <section className="relative min-h-screen overflow-hidden bg-[#07152f] text-white">
+        <div className="absolute inset-0 opacity-[0.06]">
+          <div
+            className="h-full w-full"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.18) 1px, transparent 0)",
+              backgroundSize: "30px 30px",
+            }}
+          />
+        </div>
+
+        <div className="page-container relative flex min-h-screen items-center py-12 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-4xl text-center">
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-500/15 sm:h-20 sm:w-20">
+            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-green-500/15 ring-1 ring-green-400/30 sm:h-20 sm:w-20">
               <CheckCircle2 className="h-8 w-8 text-green-400 sm:h-10 sm:w-10" />
             </div>
 
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/90 sm:text-sm">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-red-600 px-4 py-2 text-[11px] font-bold uppercase text-white sm:text-sm">
               <ShieldCheck className="h-4 w-4" />
               Registro recibido correctamente
             </div>
 
-            <h1 className="mx-auto mb-4 max-w-3xl text-3xl font-bold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
-              Estás a nada de entrar.
-            </h1>
-
-            <p className="mx-auto mb-4 max-w-2xl text-lg font-semibold text-green-400 sm:text-xl lg:text-2xl">
-              Ya completaste el 90% de tu registro.
-            </p>
-
-            <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-neutral-300 sm:text-base lg:text-lg">
-              Solo te falta un paso importante para recibir recordatorios,
-              materiales y el enlace clave de acceso:
-              <span className="font-semibold text-white">
-                {" "}
-                entrar al grupo de WhatsApp.
-              </span>
-            </p>
-
-            <div className="mx-auto mb-6 max-w-2xl rounded-2xl border border-cefin-red/30 bg-white/5 p-4 sm:rounded-3xl sm:p-5">
-              <p className="text-sm font-semibold text-white sm:text-base">
-                ⚠️ Si no entras al grupo, podrías perder avisos importantes
-                antes de la clase.
+            <div className="mx-auto mb-7 max-w-xl">
+              <div className="mb-2 flex items-center justify-between gap-4 text-sm font-semibold">
+                <span className="text-white/70">Tu registro está al 80%</span>
+                <span className="text-amber-400">80%</span>
+              </div>
+              <div
+                className="h-2.5 overflow-hidden rounded-full bg-white/10"
+                role="progressbar"
+                aria-label="Progreso del registro"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="80"
+              >
+                <div className="h-full w-4/5 rounded-full bg-gradient-to-r from-red-600 to-amber-400 shadow-[0_0_18px_rgba(251,191,36,0.35)]" />
+              </div>
+              <p className="mt-2 text-left text-xs text-white/45">
+                Entra al grupo de WhatsApp para completar el último paso.
               </p>
             </div>
 
-            <div className="flex flex-col items-center justify-center gap-4">
+            <h1 className="mx-auto mb-4 max-w-3xl text-4xl font-black uppercase leading-[0.95] sm:text-5xl md:text-6xl lg:text-7xl">
+              Tu lugar está casi listo
+            </h1>
+
+            <p className="mx-auto mb-7 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg lg:text-xl">
+              Entra ahora al grupo de WhatsApp para recibir el enlace de acceso,
+              materiales y recordatorios de la clase.
+            </p>
+
+            <div className="mx-auto mb-7 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
+              <div className="flex min-h-[80px] items-center justify-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3">
+                <CalendarDays className="h-5 w-5 text-amber-400" />
+                <div className="text-left">
+                  <p className="text-xs uppercase text-white/50">Día</p>
+                  <p className="font-bold">Jueves</p>
+                </div>
+              </div>
+              <div className="flex min-h-[80px] items-center justify-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3">
+                <CalendarDays className="h-5 w-5 text-red-400" />
+                <div className="text-left">
+                  <p className="text-xs uppercase text-white/50">Fecha</p>
+                  <p className="font-bold">30 de julio de 2026</p>
+                </div>
+              </div>
+              <div className="flex min-h-[80px] items-center justify-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3">
+                <Clock className="h-5 w-5 text-sky-400" />
+                <div className="text-left">
+                  <p className="text-xs uppercase text-white/50">Hora</p>
+                  <p className="font-bold">11:00 a. m. CDMX</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mx-auto max-w-xl rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6">
+              <MessageCircle className="mx-auto mb-3 h-8 w-8 text-green-400" />
+              <p className="mb-5 text-sm font-semibold text-white sm:text-base">
+                Este último paso es necesario para recibir todos los avisos.
+              </p>
               <CTAButton
                 href={whatsappUrl}
                 variant="primary"
                 size="lg"
                 showArrow
+                fullWidth
               >
                 Entrar al grupo de WhatsApp ahora
               </CTAButton>
 
-              <p className="text-xs text-neutral-400 sm:text-sm">
-                Último paso para completar tu acceso
+              <p className="mt-3 text-xs text-white/45 sm:text-sm">
+                Acceso gratuito. Ábrelo desde tu teléfono para continuar.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-padding bg-neutral-50">
-        <div className="page-container">
-          <div className="mx-auto max-w-3xl rounded-2xl bg-cefin-dark p-6 text-center shadow-2xl sm:rounded-3xl sm:p-8 lg:p-10">
-            <h2 className="mb-3 text-2xl font-bold text-white sm:text-3xl">
-              Completa tu acceso ahora
-            </h2>
-
-            <p className="mx-auto mb-8 max-w-2xl text-sm leading-relaxed text-neutral-300 sm:text-base lg:text-lg">
-              Da clic aquí y entra al grupo de WhatsApp para recibir todo lo
-              necesario antes de la clase.
-            </p>
-
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <CTAButton
-                href={whatsappUrl}
-                variant="primary"
-                size="lg"
-                showArrow
-              >
-                Sí, quiero entrar al grupo
-              </CTAButton>
-
-              <CTAButton href="/" variant="outlineLight" size="lg">
-                Volver al inicio
-              </CTAButton>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-padding-sm bg-white">
-        <div className="page-container">
-          <div className="mx-auto max-w-2xl text-center">
-            <h3 className="mb-3 text-xl font-bold text-neutral-900 sm:text-2xl">
-              ¿No recibiste el correo?
-            </h3>
-
-            <p className="mb-6 text-sm text-neutral-600 sm:text-base lg:text-lg">
-              Revisa spam, promociones o correo no deseado. Pero recuerda: la
-              vía más importante para no perderte nada es entrar al grupo de
-              WhatsApp.
-            </p>
-
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-cefin-red transition-colors hover:text-cefin-red-dark sm:text-base"
-            >
-              Ir al sitio principal
-              <ArrowRight className="h-4 w-4" />
-            </Link>
           </div>
         </div>
       </section>

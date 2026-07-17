@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Instagram, Youtube, Facebook, ArrowUpRight } from 'lucide-react';
 
 const footerLinks = [
@@ -35,6 +38,10 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (pathname === '/gracias') return null;
+
   return (
     <footer className="bg-cefin-dark text-white">
       <div className="page-container py-14 sm:py-16 lg:py-20">

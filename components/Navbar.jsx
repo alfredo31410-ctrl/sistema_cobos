@@ -56,6 +56,8 @@ export default function Navbar() {
 
   const isActive = (href) => pathname === href;
 
+  if (pathname === '/gracias') return null;
+
   return (
     <>
       <nav
