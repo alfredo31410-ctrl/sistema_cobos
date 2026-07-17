@@ -18,11 +18,45 @@ export default function GraciasPage() {
     const params = new URLSearchParams(window.location.search);
     if (params.get("registro") !== "clase-gratis") return;
 
-    track("CompleteRegistration", {
-      content_name: "Clase Gratis - Monetiza tu Conocimiento",
-      content_category: "Clase gratuita",
-      content_type: "event",
-    });
+    const sentKey = "meta_complete_registration_clase_gratis";
+    const eventIdKey = "meta_complete_registration_event_id";
+    if (sessionStorage.getItem(sentKey)) return;
+
+    const eventId =
+      sessionStorage.getItem(eventIdKey) ||
+      (typeof crypto.randomUUID === "function"
+        ? crypto.randomUUID()
+        : `registration-${Date.now()}`);
+
+    sessionStorage.setItem(eventIdKey, eventId);
+
+    let attempts = 0;
+    const sendConversion = () => {
+      attempts += 1;
+      const sent = track(
+        "CompleteRegistration",
+        {
+          content_name: "Clase Gratis - Monetiza tu Conocimiento",
+          content_category: "Clase gratuita",
+          content_type: "event",
+          status: "completed",
+          value: 0,
+          currency: "MXN",
+        },
+        { eventID: eventId },
+      );
+
+      if (sent) sessionStorage.setItem(sentKey, "true");
+      return sent;
+    };
+
+    if (sendConversion()) return;
+
+    const interval = window.setInterval(() => {
+      if (sendConversion() || attempts >= 20) window.clearInterval(interval);
+    }, 250);
+
+    return () => window.clearInterval(interval);
   }, []);
 
   return (
