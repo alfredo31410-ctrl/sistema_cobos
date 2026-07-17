@@ -18,11 +18,10 @@ export default function GraciasPage() {
     const params = new URLSearchParams(window.location.search);
     if (params.get("registro") !== "clase-gratis") return;
 
-    const eventId = sessionStorage.getItem("pending_class_registration_id");
-    if (!eventId) return;
-
-    const sentKey = `meta_complete_registration_sent_${eventId}`;
-    if (sessionStorage.getItem(sentKey)) return;
+    const eventId =
+      typeof crypto.randomUUID === "function"
+        ? crypto.randomUUID()
+        : `registration-${Date.now()}`;
 
     let attempts = 0;
     const sendConversion = () => {
@@ -40,10 +39,6 @@ export default function GraciasPage() {
         { eventID: eventId },
       );
 
-      if (sent) {
-        sessionStorage.setItem(sentKey, "true");
-        sessionStorage.removeItem("pending_class_registration_id");
-      }
       return sent;
     };
 
