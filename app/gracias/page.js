@@ -65,8 +65,26 @@ export default function GraciasPage() {
               Entra ahora al grupo de WhatsApp para recibir el enlace de acceso,
               materiales y recordatorios de la clase.
             </p>
+            <div className="mx-auto mb-7 max-w-2xl rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6">
+              <MessageCircle className="mx-auto mb-3 h-8 w-8 text-green-400" />
+              <p className="mb-5 text-sm font-semibold text-white sm:text-base">
+                Este último paso es necesario para recibir todos los avisos.
+              </p>
+              <CTAButton
+                href={whatsappUrl}
+                variant="primary"
+                size="lg"
+                showArrow
+                fullWidth
+              >
+                Entrar al grupo de WhatsApp ahora
+              </CTAButton>
 
-            <div className="mx-auto mb-7 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
+              <p className="mt-3 text-xs text-white/45 sm:text-sm">
+                Acceso gratuito. Ábrelo desde tu teléfono para continuar.
+              </p>
+            </div>
+            <div className="mx-auto grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
               <div className="flex min-h-[80px] items-center justify-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3">
                 <CalendarDays className="h-5 w-5 text-amber-400" />
                 <div className="text-left">
@@ -88,26 +106,6 @@ export default function GraciasPage() {
                   <p className="font-bold">11:00 a. m. CDMX</p>
                 </div>
               </div>
-            </div>
-
-            <div className="mx-auto max-w-xl rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6">
-              <MessageCircle className="mx-auto mb-3 h-8 w-8 text-green-400" />
-              <p className="mb-5 text-sm font-semibold text-white sm:text-base">
-                Este último paso es necesario para recibir todos los avisos.
-              </p>
-              <CTAButton
-                href={whatsappUrl}
-                variant="primary"
-                size="lg"
-                showArrow
-                fullWidth
-              >
-                Entrar al grupo de WhatsApp ahora
-              </CTAButton>
-
-              <p className="mt-3 text-xs text-white/45 sm:text-sm">
-                Acceso gratuito. Ábrelo desde tu teléfono para continuar.
-              </p>
             </div>
           </div>
         </div>
