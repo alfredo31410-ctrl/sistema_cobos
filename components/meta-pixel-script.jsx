@@ -25,6 +25,17 @@ export default function MetaPixelScript() {
 
           fbq('init', '${PIXEL_ID}');
           fbq('track', 'PageView');
+
+          if (window.location.pathname === '/gracias') {
+            fbq('track', 'CompleteRegistration', {
+              content_name: 'Clase Gratis - Monetiza tu Conocimiento',
+              content_category: 'Clase gratuita',
+              content_type: 'event',
+              status: 'completed',
+              value: 0,
+              currency: 'MXN'
+            });
+          }
         `}
       </Script>
     </>

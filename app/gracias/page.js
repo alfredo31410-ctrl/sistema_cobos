@@ -1,8 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
 import CTAButton from "@/components/CTAButton";
-import { track } from "@/lib/meta-pixel";
 import {
   CalendarDays,
   CheckCircle2,
@@ -13,43 +11,6 @@ import {
 
 export default function GraciasPage() {
   const whatsappUrl = "https://chat.whatsapp.com/EPMecVkKKKH5Ac5INEBIkj";
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("registro") !== "clase-gratis") return;
-
-    const eventId =
-      typeof crypto.randomUUID === "function"
-        ? crypto.randomUUID()
-        : `registration-${Date.now()}`;
-
-    let attempts = 0;
-    const sendConversion = () => {
-      attempts += 1;
-      const sent = track(
-        "CompleteRegistration",
-        {
-          content_name: "Clase Gratis - Monetiza tu Conocimiento",
-          content_category: "Clase gratuita",
-          content_type: "event",
-          status: "completed",
-          value: 0,
-          currency: "MXN",
-        },
-        { eventID: eventId },
-      );
-
-      return sent;
-    };
-
-    if (sendConversion()) return;
-
-    const interval = window.setInterval(() => {
-      if (sendConversion() || attempts >= 20) window.clearInterval(interval);
-    }, 250);
-
-    return () => window.clearInterval(interval);
-  }, []);
 
   return (
     <>
