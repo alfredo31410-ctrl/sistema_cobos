@@ -89,21 +89,21 @@ export default function GraciasPage() {
                 <CalendarDays className="h-5 w-5 text-amber-400" />
                 <div className="text-left">
                   <p className="text-xs uppercase text-white/50">Día</p>
-                  <p className="font-bold">Jueves</p>
+                  <p className="font-bold">Viernes</p>
                 </div>
               </div>
               <div className="flex min-h-[80px] items-center justify-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3">
                 <CalendarDays className="h-5 w-5 text-red-400" />
                 <div className="text-left">
                   <p className="text-xs uppercase text-white/50">Fecha</p>
-                  <p className="font-bold">30 de julio de 2026</p>
+                  <p className="font-bold">7 de agosto de 2026</p>
                 </div>
               </div>
               <div className="flex min-h-[80px] items-center justify-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3">
                 <Clock className="h-5 w-5 text-sky-400" />
                 <div className="text-left">
                   <p className="text-xs uppercase text-white/50">Hora</p>
-                  <p className="font-bold">11:00 a. m. CDMX</p>
+                  <p className="font-bold">11:00 p. m. CDMX</p>
                 </div>
               </div>
             </div>
