@@ -103,7 +103,7 @@ export default function GraciasPage() {
                 <Clock className="h-5 w-5 text-sky-400" />
                 <div className="text-left">
                   <p className="text-xs uppercase text-white/50">Hora</p>
-                  <p className="font-bold">11:00 p. m. CDMX</p>
+                  <p className="font-bold">1:00 p. m. CDMX</p>
                 </div>
               </div>
             </div>

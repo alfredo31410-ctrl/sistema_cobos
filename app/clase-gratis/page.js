@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 
 const EVENT_DATE = "7 de agosto de 2026";
-const EVENT_TIME = "11:00 p. m. (hora de CDMX)";
+const EVENT_TIME = "1:00 p. m. (hora de CDMX)";
 const eventPayload = {
   content_name: "Clase Gratis - Monetiza tu Conocimiento",
   content_category: "Clase gratuita",
@@ -30,7 +30,7 @@ function RegistrationButton({ location, className = "" }) {
   const handleClick = () => {
     trackCustom("FreeClassRegistrationClick", {
       ...eventPayload,
-      event_date: "2026-08-07 23:00 CDMX",
+      event_date: "2026-08-07 13:00 CDMX",
       location,
     });
   };
@@ -201,7 +201,7 @@ export default function ClaseGratisPage() {
                   <Clock className="h-5 w-5 shrink-0 text-sky-400" />
                   <div>
                     <p className="text-xs font-semibold uppercase text-white/55">Hora</p>
-                    <p className="font-bold leading-tight text-white">11:00 p. m. CDMX</p>
+                    <p className="font-bold leading-tight text-white">1:00 p. m. CDMX</p>
                   </div>
                 </div>
               </div>
