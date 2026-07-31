@@ -23,10 +23,10 @@ export default function ActiveCampaignForm() {
 
   return (
     <div className="ac-form-wrapper">
-      <div className="_form_285"></div>
+      <div className="_form_303"></div>
 
       <Script
-        src="https://cefincapacitacion.activehosted.com/f/embed.php?id=285"
+        src="https://cefincapacitacion.activehosted.com/f/embed.php?id=303"
         strategy="afterInteractive"
       />
     </div>
