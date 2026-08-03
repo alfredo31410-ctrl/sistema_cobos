@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 export default function GraciasPage() {
-  const whatsappUrl = "https://chat.whatsapp.com/EPMecVkKKKH5Ac5INEBIkj";
+  const whatsappUrl = "https://chat.whatsapp.com/EDllP14YMFo0XGerb9FMsb";
 
   return (
     <>
