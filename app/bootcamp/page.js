@@ -16,27 +16,28 @@ import { track, trackCustom } from '@/lib/meta-pixel';
 
 const checkoutUrl =
   process.env.NEXT_PUBLIC_BOOTCAMP_CHECKOUT_URL ||
-  'https://pay.hotmart.com/D105608894V?off=50spi9iv&checkoutMode=10';
+  'https://pay.hotmart.com/S106940094Q?off=m8p9f7g6&checkoutMode=10';
 
 const eventPayload = {
-  content_name: 'Taller: Crea tu oferta digital 360°',
+  content_name: 'De Cero a Infoproductor',
   content_category: 'Bootcamp',
   content_type: 'product',
   currency: 'MXN',
-  value: 987,
+  value: 487,
 };
 
-const includes = [
-  'Taller en vivo para definir y estructurar tu oferta digital',
-  'Guía para convertir tu conocimiento en un producto vendible',
-  'Enfoque práctico para salir con una dirección clara',
-  'Sesión diseñada para ayudarte a vender dentro de Hotmart',
+const bannerIncludes = [
+  '3 dias de entrenamiento en vivo para convertir tu conocimiento en una oferta',
+  'Metodo para detectar el problema que puedes resolver',
+  'Estructura para organizar y presentar tu metodo',
+  'Una propuesta educativa clara y lista para validar',
 ];
 
-const outcomes = [
-  'Entender qué vender y cómo presentarlo',
-  'Evitar improvisar tu curso o producto digital',
-  'Definir una oferta más clara, más atractiva y más vendible',
+const bannerOutcomes = [
+  'Detecta el problema',
+  'Organiza tu metodo',
+  'Define una promesa',
+  'Prepara tu propuesta para validar',
 ];
 
 function handleCheckoutClick(location) {
@@ -49,7 +50,6 @@ function handleCheckoutClick(location) {
     ...eventPayload,
     location,
     checkout_url: checkoutUrl,
-    event_date: '2026-05-13 11:00 AM CDMX',
   });
 }
 
@@ -62,7 +62,7 @@ function PurchaseButton({ className = '', location = 'unknown' }) {
       onClick={() => handleCheckoutClick(location)}
       className={`group inline-flex items-center justify-center rounded-full bg-[#ff4d12] px-6 py-4 text-sm font-black uppercase tracking-[0.08em] text-white shadow-[0_18px_40px_rgba(255,77,18,0.35)] transition duration-300 hover:-translate-y-1 hover:bg-[#ff5e29] sm:text-base ${className}`}
     >
-      Asegura tu lugar aquí
+      Convierte lo que sabes en una oferta
       <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
     </Link>
   );
@@ -73,8 +73,7 @@ export default function BootcampPage() {
     track('ViewContent', eventPayload);
     trackCustom('BootcampView', {
       ...eventPayload,
-      event_date: '2026-05-13 11:00 AM CDMX',
-      price_label: '$987 MXN',
+      price_label: '$487 MXN',
     });
   }, []);
 
@@ -103,22 +102,22 @@ export default function BootcampPage() {
             <div className="relative max-w-[680px]">
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#ff6b4a]/25 bg-[#42120e]/80 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#ffb29d] shadow-[0_0_40px_rgba(255,84,48,0.12)] sm:text-xs">
                 <Sparkles className="h-3.5 w-3.5" />
-                Taller en vivo de pago
+                Programa en vivo
               </div>
 
               <h1 className="max-w-[620px] text-[2.6rem] font-black uppercase leading-[0.88] tracking-[-0.04em] text-white sm:text-[3.8rem] lg:text-[4.5rem] xl:text-[5.2rem]">
                 <span className="block text-[#ff7b72] [text-shadow:0_0_20px_rgba(255,89,72,0.5)]">
-                  Taller: crea tu
+                  De cero a
                 </span>
-                <span className="block">oferta digital</span>
+                <span className="block">infoproductor</span>
                 <span className="block text-[#ff6250] [text-shadow:0_0_28px_rgba(255,80,64,0.6)]">
-                  360°
+                  en 3 días
                 </span>
               </h1>
 
               <p className="mt-5 max-w-[640px] text-lg font-semibold italic leading-tight text-white sm:text-[1.5rem] lg:text-[1.9rem]">
-                Te enseñamos a crear el curso indicado para lograr tus primeras
-                ventas en <span className="text-[#ff7c26]">Hotmart</span>.
+                Convierte lo que ya sabes en una propuesta educativa clara y
+                lista para validar.
               </p>
 
               <div className="mt-7 max-w-[620px] rounded-[1.9rem] bg-[linear-gradient(90deg,#a1221f_0%,#a94f2d_55%,#9b6036_100%)] px-5 py-4 shadow-[0_18px_45px_rgba(119,27,17,0.35)] sm:px-7 sm:py-5">
@@ -135,7 +134,7 @@ export default function BootcampPage() {
                       A sólo
                     </p>
                     <p className="mt-1 text-[2rem] font-black sm:text-[2.4rem]">
-                      $987
+                      $487
                     </p>
                     <p className="mt-1 text-lg font-black sm:text-xl">pesos.</p>
                   </div>
@@ -147,15 +146,15 @@ export default function BootcampPage() {
               <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-white/78 sm:text-base">
                 <div className="flex items-center gap-2">
                   <PlayCircle className="h-4 w-4 text-[#ff7c26]" />
-                  100% en vivo
+                  3 dias en vivo
                 </div>
                 <div className="flex items-center gap-2">
                   <Laptop className="h-4 w-4 text-[#ff7c26]" />
-                  Enfoque práctico
+                  Método paso a paso
                 </div>
                 <div className="flex items-center gap-2">
                   <CircleDollarSign className="h-4 w-4 text-[#ff7c26]" />
-                  Pago único
+                  Listo para validar
                 </div>
               </div>
             </div>
@@ -187,7 +186,7 @@ export default function BootcampPage() {
               </p>
 
               <div className="grid gap-4">
-                {includes.map((item) => (
+                {bannerIncludes.map((item) => (
                   <div
                     key={item}
                     className="flex items-start gap-3 rounded-2xl border border-white/6 bg-black/20 px-4 py-4"
@@ -203,11 +202,11 @@ export default function BootcampPage() {
 
             <div className="rounded-[2rem] border border-[#ff6c47]/15 bg-[radial-gradient(circle_at_top,rgba(255,118,64,0.12),transparent_45%),linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.28)] sm:p-8">
               <p className="mb-5 text-xs font-black uppercase tracking-[0.24em] text-[#ff8f6b]">
-                Sales con claridad para
+                Al finalizar tendrás
               </p>
 
               <div className="space-y-4">
-                {outcomes.map((item) => (
+                {bannerOutcomes.map((item) => (
                   <div key={item} className="rounded-2xl bg-black/20 px-4 py-4">
                     <p className="text-sm font-semibold leading-relaxed text-white/88 sm:text-base">
                       {item}
@@ -218,9 +217,8 @@ export default function BootcampPage() {
 
               <div className="mt-7 rounded-[1.6rem] bg-[linear-gradient(90deg,rgba(255,77,18,0.16),rgba(255,145,56,0.08))] px-5 py-5">
                 <p className="text-sm leading-relaxed text-white/80 sm:text-base">
-                  Este taller está pensado para ayudarte a estructurar una
-                  oferta más clara, más vendible y con dirección real desde el
-                  primer paso.
+                  Una propuesta educativa clara, estructurada y lista para
+                  validar con personas reales.
                 </p>
               </div>
             </div>
@@ -232,23 +230,23 @@ export default function BootcampPage() {
         <div className="page-container">
           <div className="mx-auto max-w-5xl rounded-[2.2rem] border border-white/8 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] px-6 py-8 text-center shadow-[0_24px_70px_rgba(0,0,0,0.35)] sm:px-8 sm:py-10 lg:px-12">
             <p className="text-xs font-black uppercase tracking-[0.24em] text-[#ff8f6b]">
-              Reserva tu lugar
+                  Oferta especial
             </p>
 
             <h2 className="mt-4 text-3xl font-black uppercase leading-[0.92] tracking-[-0.04em] sm:text-4xl lg:text-5xl">
-              Crea tu oferta digital
-              <span className="block text-[#ff6655]">y empieza a vender</span>
+              Convierte lo que sabes en una oferta
+                  <span className="block text-[#ff6655]">lista para validar</span>
             </h2>
 
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-white/74 sm:text-base lg:text-lg">
-              Una sesión diseñada para ayudarte a pasar de “sé mucho” a “ya
-              tengo una oferta clara para vender”.
+              En 3 días en vivo vas a detectar el problema, organizar tu método,
+              definir una promesa y preparar tu propuesta.
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-4">
               <PurchaseButton location="footer" />
               <p className="text-sm font-semibold text-white/58">
-                Precio actual: $987 MXN
+                Precio especial: $487 MXN
               </p>
             </div>
           </div>
