@@ -41,7 +41,7 @@ function RegistrationButton({ location, className = "" }) {
       onClick={handleClick}
       className={`cta-energy group relative inline-flex min-h-[56px] items-center justify-center overflow-hidden rounded-xl bg-red-600 px-6 py-4 text-center text-base font-black uppercase text-white shadow-lg shadow-red-950/25 transition hover:-translate-y-0.5 hover:bg-red-700 ${className}`}
     >
-      Registrarme ahora
+      INSCRIBIRME YA
       <ArrowRight className="ml-2 h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1" />
     </a>
   );
