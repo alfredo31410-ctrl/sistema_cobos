@@ -50,6 +50,7 @@ function handleCheckoutClick(location) {
     ...eventPayload,
     location,
     checkout_url: checkoutUrl,
+    event_date: '12, 13 y 14 de agosto de 2026, 1:00 PM CDMX',
   });
 }
 
@@ -74,6 +75,7 @@ export default function BootcampPage() {
     trackCustom('BootcampView', {
       ...eventPayload,
       price_label: '$487 MXN',
+      event_date: '12, 13 y 14 de agosto de 2026, 1:00 PM CDMX',
     });
   }, []);
 
@@ -122,7 +124,7 @@ export default function BootcampPage() {
 
               <div className="mt-7 max-w-[620px] rounded-[1.9rem] bg-[linear-gradient(90deg,#a1221f_0%,#a94f2d_55%,#9b6036_100%)] px-5 py-4 shadow-[0_18px_45px_rgba(119,27,17,0.35)] sm:px-7 sm:py-5">
                 <p className="text-center text-lg font-black italic text-white sm:text-[1.9rem]">
-                  Miércoles, 13 de mayo de 2026, 11:00 a.m.
+                  12, 13 y 14 de agosto · 1:00 p.m. CDMX
                 </p>
               </div>
 
