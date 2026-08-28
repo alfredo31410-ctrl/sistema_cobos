@@ -2,6 +2,10 @@ export const COUNTRY_SLUGS = ["mexico", "colombia", "peru", "usa"] as const;
 
 export type CountrySlug = (typeof COUNTRY_SLUGS)[number];
 
+export const DEFAULT_FREE_CLASS_COUNTRY: CountrySlug = "mexico";
+
+export const eventStartsAt = "2026-09-08T00:00:00.000Z" as const;
+
 export type CountryConfig = Readonly<{
   slug: CountrySlug;
   countryCode: "MX" | "CO" | "PE" | "US";
@@ -12,11 +16,7 @@ export type CountryConfig = Readonly<{
 
 export const FREE_CLASS_EVENT = Object.freeze({
   campaign: "clase-gratis-2026-09-07",
-  dateLabel: "7 de septiembre de 2026",
-  dayLabel: "Lunes",
-  timeLabel: "6:00 p. m. (hora de CDMX)",
-  shortTimeLabel: "6:00 p. m. CDMX",
-  startsAt: "2026-09-07 18:00 CDMX",
+  startsAt: eventStartsAt,
 });
 
 export const ACTIVE_CAMPAIGN_FORM = Object.freeze({
@@ -55,6 +55,139 @@ export const FREE_CLASS_COUNTRIES = {
     phoneCountry: "+1",
   },
 } as const satisfies Readonly<Record<CountrySlug, CountryConfig>>;
+
+export type EventTimeZone = Readonly<{
+  timeZone: string;
+  shortLabel: string;
+  longLabel: string;
+}>;
+
+export const FREE_CLASS_TIME_ZONES = {
+  mexico: [
+    {
+      timeZone: "America/Mexico_City",
+      shortLabel: "CDMX",
+      longLabel: "CDMX",
+    },
+  ],
+  colombia: [
+    {
+      timeZone: "America/Bogota",
+      shortLabel: "Bogotá",
+      longLabel: "Bogotá",
+    },
+  ],
+  peru: [
+    {
+      timeZone: "America/Lima",
+      shortLabel: "Lima",
+      longLabel: "Lima",
+    },
+  ],
+  usa: [
+    {
+      timeZone: "America/New_York",
+      shortLabel: "ET",
+      longLabel: "ET",
+    },
+    {
+      timeZone: "America/Chicago",
+      shortLabel: "CT",
+      longLabel: "CT",
+    },
+    {
+      timeZone: "America/Denver",
+      shortLabel: "MT",
+      longLabel: "MT",
+    },
+    {
+      timeZone: "America/Los_Angeles",
+      shortLabel: "PT",
+      longLabel: "PT",
+    },
+  ],
+} as const satisfies Readonly<Record<CountrySlug, readonly EventTimeZone[]>>;
+
+export type FreeClassEventTime = EventTimeZone &
+  Readonly<{
+    timeLabel: string;
+  }>;
+
+export type FreeClassEventSchedule = Readonly<{
+  startsAt: typeof eventStartsAt;
+  dayLabel: string;
+  dateLabel: string;
+  fullDateLabel: string;
+  times: readonly FreeClassEventTime[];
+}>;
+
+const EVENT_LOCALE = "es-MX";
+
+function getDateTimePart(
+  parts: Intl.DateTimeFormatPart[],
+  type: Intl.DateTimeFormatPartTypes,
+): string {
+  const value = parts.find((part) => part.type === type)?.value;
+
+  if (!value) throw new Error(`No se pudo calcular ${type} para la clase gratis`);
+  return value;
+}
+
+function formatEventDate(timeZone: string) {
+  const parts = new Intl.DateTimeFormat(EVENT_LOCALE, {
+    timeZone,
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).formatToParts(new Date(eventStartsAt));
+
+  const weekday = getDateTimePart(parts, "weekday");
+  const day = getDateTimePart(parts, "day");
+  const month = getDateTimePart(parts, "month");
+  const year = getDateTimePart(parts, "year");
+  const dateLabel = `${day} de ${month} de ${year}`;
+
+  return {
+    dayLabel: weekday.charAt(0).toLocaleUpperCase(EVENT_LOCALE) + weekday.slice(1),
+    dateLabel,
+    fullDateLabel: `${weekday} ${dateLabel}`,
+  };
+}
+
+function formatEventTime(timeZone: string): string {
+  const parts = new Intl.DateTimeFormat(EVENT_LOCALE, {
+    timeZone,
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  }).formatToParts(new Date(eventStartsAt));
+
+  const hour = getDateTimePart(parts, "hour");
+  const minute = getDateTimePart(parts, "minute");
+  const dayPeriod = getDateTimePart(parts, "dayPeriod")
+    .toLocaleLowerCase(EVENT_LOCALE)
+    .replace(/[^apm]/g, "");
+  const normalizedDayPeriod = dayPeriod === "am" ? "a. m." : "p. m.";
+
+  return `${hour}:${minute} ${normalizedDayPeriod}`;
+}
+
+export function getFreeClassEventSchedule(
+  slug: CountrySlug,
+): FreeClassEventSchedule {
+  const timeZones = FREE_CLASS_TIME_ZONES[slug];
+  const date = formatEventDate(timeZones[0].timeZone);
+
+  return {
+    startsAt: eventStartsAt,
+    ...date,
+    times: timeZones.map((zone) => ({
+      ...zone,
+      timeLabel: formatEventTime(zone.timeZone),
+    })),
+  };
+}
 
 const UTM_FIELD_NAMES = {
   utm_source: "field[7]",

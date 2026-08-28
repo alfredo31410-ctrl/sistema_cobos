@@ -3,9 +3,13 @@ import test from "node:test";
 import { createActiveCampaignCallback } from "../lib/active-campaign-callback.ts";
 import {
   COUNTRY_SLUGS,
+  DEFAULT_FREE_CLASS_COUNTRY,
+  FREE_CLASS_EVENT,
   FREE_CLASS_COUNTRIES,
   MAX_UTM_LENGTH,
+  eventStartsAt,
   getActiveCampaignFields,
+  getFreeClassEventSchedule,
   isCountrySlug,
   sanitizeUtmValue,
 } from "../lib/clase-gratis-config.ts";
@@ -130,4 +134,60 @@ test("el éxito propio se conserva aunque el callback previo falle", () => {
 
   assert.throws(() => callback(335), /fallo externo/);
   assert.equal(successes, 1);
+});
+
+test("calcula la hora local de México, Colombia y Perú", () => {
+  const expectedLabels = {
+    mexico: "6:00 p. m. — CDMX",
+    colombia: "7:00 p. m. — Bogotá",
+    peru: "7:00 p. m. — Lima",
+  } as const;
+
+  for (const [slug, expectedLabel] of Object.entries(expectedLabels)) {
+    const eventTime = getFreeClassEventSchedule(slug as keyof typeof expectedLabels)
+      .times[0];
+
+    assert.equal(
+      `${eventTime.timeLabel} — ${eventTime.shortLabel}`,
+      expectedLabel,
+    );
+    assert.equal(eventTime.longLabel, eventTime.shortLabel);
+  }
+});
+
+test("calcula las cuatro zonas principales de USA", () => {
+  const schedule = getFreeClassEventSchedule("usa");
+
+  assert.deepEqual(
+    schedule.times.map(({ timeLabel, shortLabel }) =>
+      `${timeLabel} ${shortLabel}`,
+    ),
+    ["8:00 p. m. ET", "7:00 p. m. CT", "6:00 p. m. MT", "5:00 p. m. PT"],
+  );
+});
+
+test("todas las rutas conservan el lunes 7 de septiembre de 2026", () => {
+  for (const slug of COUNTRY_SLUGS) {
+    assert.equal(
+      getFreeClassEventSchedule(slug).fullDateLabel,
+      "lunes 7 de septiembre de 2026",
+    );
+  }
+});
+
+test("la ruta base conserva la presentación de México", () => {
+  assert.equal(DEFAULT_FREE_CLASS_COUNTRY, "mexico");
+  assert.equal(
+    getFreeClassEventSchedule(DEFAULT_FREE_CLASS_COUNTRY).times[0].timeLabel,
+    "6:00 p. m.",
+  );
+});
+
+test("el inicio del evento procede de un único instante UTC", () => {
+  assert.equal(eventStartsAt, "2026-09-08T00:00:00.000Z");
+  assert.equal(FREE_CLASS_EVENT.startsAt, eventStartsAt);
+  assert.deepEqual(
+    [...new Set(COUNTRY_SLUGS.map((slug) => getFreeClassEventSchedule(slug).startsAt))],
+    [eventStartsAt],
+  );
 });

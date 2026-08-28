@@ -4,7 +4,10 @@ import Image from "next/image";
 import { useEffect } from "react";
 import ActiveCampaignForm from "@/components/ActiveCampaignForm";
 import SectionTitle from "@/components/SectionTitle";
-import { FREE_CLASS_EVENT } from "@/lib/clase-gratis-config";
+import {
+  FREE_CLASS_EVENT,
+  getFreeClassEventSchedule,
+} from "@/lib/clase-gratis-config";
 import { track, trackCustom } from "@/lib/meta-pixel";
 import {
   ArrowRight,
@@ -19,9 +22,6 @@ import {
   Sparkles,
 } from "lucide-react";
 
-const EVENT_DATE = FREE_CLASS_EVENT.dateLabel;
-const EVENT_TIME = FREE_CLASS_EVENT.timeLabel;
-
 function getEventPayload(country) {
   return {
     content_name: "Clase Gratis - Monetiza tu Conocimiento",
@@ -30,6 +30,47 @@ function getEventPayload(country) {
     country: country.countryCode,
     campaign: FREE_CLASS_EVENT.campaign,
   };
+}
+
+function EventDate({ schedule, includeWeekday = false, className = "" }) {
+  return (
+    <time dateTime={schedule.startsAt} className={className}>
+      {includeWeekday ? schedule.fullDateLabel : schedule.dateLabel}
+    </time>
+  );
+}
+
+function EventTimes({ schedule, detailed = false, className = "" }) {
+  if (schedule.times.length === 1) {
+    const eventTime = schedule.times[0];
+
+    return (
+      <time dateTime={schedule.startsAt} className={className}>
+        {eventTime.timeLabel} —{" "}
+        {detailed ? eventTime.longLabel : eventTime.shortLabel}
+      </time>
+    );
+  }
+
+  return (
+    <span
+      className={`grid grid-cols-2 gap-x-3 gap-y-1 sm:flex sm:flex-wrap sm:justify-center ${className}`}
+      aria-label={`Horarios: ${schedule.times
+        .map((eventTime) => `${eventTime.timeLabel} ${eventTime.shortLabel}`)
+        .join(", ")}`}
+    >
+      {schedule.times.map((eventTime) => (
+        <time
+          key={eventTime.timeZone}
+          dateTime={schedule.startsAt}
+          className="whitespace-nowrap"
+        >
+          {eventTime.timeLabel}{" "}
+          <span className="font-black">{eventTime.shortLabel}</span>
+        </time>
+      ))}
+    </span>
+  );
 }
 
 function RegistrationButton({ country, location, className = "" }) {
@@ -97,6 +138,8 @@ const authorityItems = [
 ];
 
 export default function ClaseGratisLanding({ country }) {
+  const schedule = getFreeClassEventSchedule(country.slug);
+
   useEffect(() => {
     track("ViewContent", getEventPayload(country));
 
@@ -194,25 +237,29 @@ export default function ClaseGratisLanding({ country }) {
                   <CalendarDays className="h-5 w-5 shrink-0 text-amber-400" />
                   <div>
                     <p className="text-xs font-semibold uppercase text-white/55">Día</p>
-                    <p className="font-bold text-white">
-                      {FREE_CLASS_EVENT.dayLabel}
-                    </p>
+                    <time dateTime={schedule.startsAt} className="font-bold text-white">
+                      {schedule.dayLabel}
+                    </time>
                   </div>
                 </div>
                 <div className="flex min-h-[82px] items-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 backdrop-blur-sm">
                   <CalendarDays className="h-5 w-5 shrink-0 text-red-400" />
                   <div>
                     <p className="text-xs font-semibold uppercase text-white/55">Fecha</p>
-                    <p className="font-bold leading-tight text-white">{EVENT_DATE}</p>
+                    <EventDate
+                      schedule={schedule}
+                      className="font-bold leading-tight text-white"
+                    />
                   </div>
                 </div>
                 <div className="flex min-h-[82px] items-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 backdrop-blur-sm">
                   <Clock className="h-5 w-5 shrink-0 text-sky-400" />
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <p className="text-xs font-semibold uppercase text-white/55">Hora</p>
-                    <p className="font-bold leading-tight text-white">
-                      {FREE_CLASS_EVENT.shortTimeLabel}
-                    </p>
+                    <EventTimes
+                      schedule={schedule}
+                      className="font-bold leading-tight text-white"
+                    />
                   </div>
                 </div>
               </div>
@@ -255,9 +302,10 @@ export default function ClaseGratisLanding({ country }) {
           <div className="flex flex-wrap justify-center gap-5 text-white sm:gap-6 lg:gap-12">
             <div className="flex items-center gap-2 sm:gap-3">
               <Users className="h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="text-sm font-semibold sm:text-base">
-                {EVENT_DATE}
-              </span>
+              <EventDate
+                schedule={schedule}
+                className="text-sm font-semibold sm:text-base"
+              />
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               <Video className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -267,9 +315,11 @@ export default function ClaseGratisLanding({ country }) {
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               <Clock className="h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="text-sm font-semibold sm:text-base">
-                {EVENT_TIME}
-              </span>
+              <EventTimes
+                schedule={schedule}
+                detailed
+                className="text-sm font-semibold sm:text-base"
+              />
             </div>
           </div>
         </div>
@@ -518,11 +568,12 @@ export default function ClaseGratisLanding({ country }) {
 
             <div className="rounded-2xl bg-[#0f1d3d] p-5 shadow-2xl sm:rounded-3xl sm:p-6 lg:p-8 xl:p-10">
               <h3 className="mb-2 text-xl font-bold text-white sm:text-2xl">
-                {EVENT_DATE}
+                <EventDate schedule={schedule} includeWeekday />
               </h3>
-              <p className="mb-6 text-sm text-neutral-400 sm:mb-8 sm:text-base">
-                {EVENT_TIME}. Regístrate para recibir el acceso y los recordatorios.
-              </p>
+              <div className="mb-6 flex flex-col items-center gap-2 text-sm text-neutral-400 sm:mb-8 sm:text-base">
+                <EventTimes schedule={schedule} detailed />
+                <span>Regístrate para recibir el acceso y los recordatorios.</span>
+              </div>
 
               <div className="text-left">
                 <ActiveCampaignForm country={country} />
@@ -549,8 +600,10 @@ export default function ClaseGratisLanding({ country }) {
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               <Clock className="h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="text-sm font-semibold sm:text-base">
-                {EVENT_DATE}, {EVENT_TIME}
+              <span className="flex flex-col items-center gap-1 text-sm font-semibold sm:text-base lg:flex-row">
+                <EventDate schedule={schedule} />
+                <span className="hidden lg:inline" aria-hidden="true">·</span>
+                <EventTimes schedule={schedule} detailed />
               </span>
             </div>
           </div>

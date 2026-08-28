@@ -1,6 +1,13 @@
 import ClaseGratisLanding from "@/components/ClaseGratisLanding";
-import { FREE_CLASS_COUNTRIES } from "@/lib/clase-gratis-config";
+import {
+  DEFAULT_FREE_CLASS_COUNTRY,
+  getCountryConfig,
+} from "@/lib/clase-gratis-config";
 
 export default function ClaseGratisPage() {
-  return <ClaseGratisLanding country={FREE_CLASS_COUNTRIES.mexico} />;
+  return (
+    <ClaseGratisLanding
+      country={getCountryConfig(DEFAULT_FREE_CLASS_COUNTRY)}
+    />
+  );
 }
