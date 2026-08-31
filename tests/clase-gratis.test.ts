@@ -1,16 +1,21 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import { createActiveCampaignCallback } from "../lib/active-campaign-callback.ts";
 import {
   COUNTRY_SLUGS,
   DEFAULT_FREE_CLASS_COUNTRY,
+  FREE_CLASS_ATTRIBUTION_STORAGE_KEY,
   FREE_CLASS_EVENT,
   FREE_CLASS_COUNTRIES,
   MAX_UTM_LENGTH,
   eventStartsAt,
   getActiveCampaignFields,
+  getCountryConfigIfValid,
   getFreeClassEventSchedule,
+  getFreeClassThankYouPath,
   isCountrySlug,
+  persistFreeClassAttribution,
   sanitizeUtmValue,
 } from "../lib/clase-gratis-config.ts";
 
@@ -30,6 +35,33 @@ test("las cuatro rutas usan el país y WhatsApp configurados", () => {
     ],
   );
   assert.equal(isCountrySlug("canada"), false);
+
+  for (const slug of COUNTRY_SLUGS) {
+    const country = getCountryConfigIfValid(slug);
+    assert.ok(country);
+    assert.equal(country.whatsappUrl, FREE_CLASS_COUNTRIES[slug].whatsappUrl);
+  }
+
+  assert.equal(getCountryConfigIfValid(undefined), null);
+  assert.equal(getCountryConfigIfValid("canada"), null);
+  assert.equal(
+    getCountryConfigIfValid("https://evil.example/whatsapp"),
+    null,
+  );
+  assert.equal(getCountryConfigIfValid("mexico&url=https://evil.example"), null);
+
+  const landingSource = readFileSync(
+    new URL("../components/ClaseGratisLanding.jsx", import.meta.url),
+    "utf8",
+  );
+  const thankYouSource = readFileSync(
+    new URL("../app/clase-gratis/gracias/page.tsx", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(landingSource, /getFreeClassEventSchedule\(country\.slug\)/);
+  assert.match(thankYouSource, /getFreeClassEventSchedule\(country\.slug\)/);
+  assert.doesNotMatch(thankYouSource, /CompleteRegistration|track\s*\(/);
 });
 
 test("field[12] siempre procede de la configuración del país", () => {
@@ -62,6 +94,34 @@ test("conserva las cinco UTMs y elimina controles antes de limitarlas", () => {
     Array.from(sanitizeUtmValue("a".repeat(MAX_UTM_LENGTH + 50))).length,
     MAX_UTM_LENGTH,
   );
+
+  const values = new Map<string, string>();
+  const stored = persistFreeClassAttribution(
+    {
+      setItem(key: string, value: string) {
+        values.set(key, value);
+      },
+    },
+    "?utm_source=%00Meta%0AAds&utm_medium=paid%20social&utm_campaign=lanzamiento&utm_content=video-a&utm_term=negocio&firstname=Ada&email=ada%40example.com&phone=5551234567",
+    "mexico",
+  );
+  const attribution = JSON.parse(
+    values.get(FREE_CLASS_ATTRIBUTION_STORAGE_KEY) ?? "{}",
+  );
+
+  assert.equal(stored, true);
+  assert.deepEqual(attribution, {
+    utm_source: "MetaAds",
+    utm_medium: "paid social",
+    utm_campaign: "lanzamiento",
+    utm_content: "video-a",
+    utm_term: "negocio",
+    country: "mexico",
+  });
+  assert.equal("firstname" in attribution, false);
+  assert.equal("lastname" in attribution, false);
+  assert.equal("email" in attribution, false);
+  assert.equal("phone" in attribution, false);
 });
 
 test("el callback procesa sólo el formulario esperado y una sola vez", () => {
@@ -100,14 +160,15 @@ test("sin callback exitoso de 335 no se procesa ni redirige", () => {
   assert.equal(successes, 0);
 });
 
-test("cada callback exitoso conserva el WhatsApp de su ruta", () => {
+test("cada país redirige a su URL interna de gracias", () => {
   const destinations: string[] = [];
 
   for (const slug of COUNTRY_SLUGS) {
     const country = FREE_CLASS_COUNTRIES[slug];
     const callback = createActiveCampaignCallback({
       matchesForm: (id) => id === 335,
-      onSuccess: () => destinations.push(country.whatsappUrl),
+      onSuccess: () =>
+        destinations.push(getFreeClassThankYouPath(country.slug)),
     });
 
     callback(335);
@@ -116,7 +177,12 @@ test("cada callback exitoso conserva el WhatsApp de su ruta", () => {
 
   assert.deepEqual(
     destinations,
-    COUNTRY_SLUGS.map((slug) => FREE_CLASS_COUNTRIES[slug].whatsappUrl),
+    [
+      "/clase-gratis/gracias?country=mexico",
+      "/clase-gratis/gracias?country=colombia",
+      "/clase-gratis/gracias?country=peru",
+      "/clase-gratis/gracias?country=usa",
+    ],
   );
 });
 

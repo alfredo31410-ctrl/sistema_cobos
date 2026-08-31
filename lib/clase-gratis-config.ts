@@ -189,6 +189,8 @@ export function getFreeClassEventSchedule(
   };
 }
 
+export const FREE_CLASS_ATTRIBUTION_STORAGE_KEY = "claseGratisAttribution";
+
 const UTM_FIELD_NAMES = {
   utm_source: "field[7]",
   utm_medium: "field[8]",
@@ -196,6 +198,18 @@ const UTM_FIELD_NAMES = {
   utm_content: "field[10]",
   utm_term: "field[11]",
 } as const;
+
+type UtmName = keyof typeof UTM_FIELD_NAMES;
+
+export type FreeClassAttribution = Readonly<
+  Record<UtmName, string> & {
+    country: CountrySlug;
+  }
+>;
+
+type SessionStorageWriter = Readonly<{
+  setItem: (key: string, value: string) => void;
+}>;
 
 export const MAX_UTM_LENGTH = 200;
 
@@ -207,6 +221,17 @@ export function getCountryConfig(slug: CountrySlug): CountryConfig {
   return FREE_CLASS_COUNTRIES[slug];
 }
 
+export function getCountryConfigIfValid(
+  value: string | undefined,
+): CountryConfig | null {
+  if (!value || !isCountrySlug(value)) return null;
+  return getCountryConfig(value);
+}
+
+export function getFreeClassThankYouPath(slug: CountrySlug): string {
+  return `/clase-gratis/gracias?country=${slug}`;
+}
+
 export function sanitizeUtmValue(value: string | null): string {
   if (!value) return "";
 
@@ -216,6 +241,36 @@ export function sanitizeUtmValue(value: string | null): string {
     .trim();
 
   return Array.from(sanitized).slice(0, MAX_UTM_LENGTH).join("");
+}
+
+export function getFreeClassAttribution(
+  search: string,
+  country: CountrySlug,
+): FreeClassAttribution {
+  const params = new URLSearchParams(search);
+  const utms = {} as Record<UtmName, string>;
+
+  for (const utmName of Object.keys(UTM_FIELD_NAMES) as UtmName[]) {
+    utms[utmName] = sanitizeUtmValue(params.get(utmName));
+  }
+
+  return { ...utms, country };
+}
+
+export function persistFreeClassAttribution(
+  storage: SessionStorageWriter,
+  search: string,
+  country: CountrySlug,
+): boolean {
+  try {
+    storage.setItem(
+      FREE_CLASS_ATTRIBUTION_STORAGE_KEY,
+      JSON.stringify(getFreeClassAttribution(search, country)),
+    );
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 export function getActiveCampaignFields(

@@ -7,6 +7,8 @@ import {
   ACTIVE_CAMPAIGN_FORM,
   FREE_CLASS_EVENT,
   getActiveCampaignFields,
+  getFreeClassThankYouPath,
+  persistFreeClassAttribution,
 } from "@/lib/clase-gratis-config";
 import { track } from "@/lib/meta-pixel";
 
@@ -39,6 +41,16 @@ export default function ActiveCampaignForm({ country }) {
       window.location.search,
       country.countryCode,
     );
+
+    try {
+      persistFreeClassAttribution(
+        window.sessionStorage,
+        window.location.search,
+        country.slug,
+      );
+    } catch {
+      // Storage can be unavailable without blocking registration.
+    }
 
     for (const [name, value] of Object.entries(fields)) {
       const field = form.elements.namedItem(name);
@@ -95,7 +107,7 @@ export default function ActiveCampaignForm({ country }) {
         });
 
         redirectTimerRef.current = window.setTimeout(() => {
-          window.location.assign(country.whatsappUrl);
+          window.location.assign(getFreeClassThankYouPath(country.slug));
         }, REDIRECT_DELAY_MS);
       },
     });
