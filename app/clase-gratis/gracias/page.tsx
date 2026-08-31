@@ -48,15 +48,16 @@ export default function ClaseGratisThankYouPage({
           </div>
 
           <h1 className="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
-            ¡Registro confirmado!
+            ¡Ya casi estás dentro! 🔥
           </h1>
           <p className="mt-4 text-xl font-bold text-amber-400 sm:text-2xl">
-            Ya estás dentro de la Clase Gratis.
+            Tu registro fue recibido correctamente. Ahora completa el último
+            paso para asegurar tu acceso a la clase.
           </p>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
-            El siguiente paso es unirte al grupo privado de WhatsApp. Ahí
-            recibirás el enlace de acceso, recordatorios y la información
-            necesaria para la clase.
+            Únete al grupo privado de WhatsApp. Ahí recibirás el enlace de
+            acceso, recordatorios y toda la información necesaria para
+            participar.
           </p>
 
           <div className="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3">
@@ -109,9 +110,12 @@ export default function ClaseGratisThankYouPage({
               rel="noopener noreferrer"
               className="inline-flex min-h-14 w-full items-center justify-center rounded-xl bg-green-600 px-5 py-4 text-center text-sm font-black uppercase text-white shadow-lg shadow-green-950/30 transition hover:-translate-y-0.5 hover:bg-green-500 sm:text-base"
             >
-              UNIRME AL GRUPO DE WHATSAPP
+              CONFIRMAR MI ACCESO EN WHATSAPP
             </a>
-            <p className="mt-4 text-xs leading-relaxed text-white/50 sm:text-sm">
+            <p className="mt-4 text-sm font-semibold leading-relaxed text-amber-300">
+              Tu acceso a la clase se completa al entrar al grupo de WhatsApp.
+            </p>
+            <p className="mt-2 text-xs leading-relaxed text-white/50 sm:text-sm">
               Si el botón no abre WhatsApp automáticamente, vuelve a intentarlo
               desde tu teléfono.
             </p>

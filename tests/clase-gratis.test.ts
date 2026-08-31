@@ -61,6 +61,21 @@ test("las cuatro rutas usan el país y WhatsApp configurados", () => {
 
   assert.match(landingSource, /getFreeClassEventSchedule\(country\.slug\)/);
   assert.match(thankYouSource, /getFreeClassEventSchedule\(country\.slug\)/);
+  assert.match(
+    landingSource,
+    /Después de registrarte, te llevaremos[\s\S]*grupo privado de WhatsApp/,
+  );
+  assert.match(
+    landingSource,
+    /Registro gratuito · El acceso se completa por WhatsApp/,
+  );
+  assert.match(thankYouSource, /¡Ya casi estás dentro! 🔥/);
+  assert.match(thankYouSource, /Tu registro fue recibido correctamente/);
+  assert.match(thankYouSource, /CONFIRMAR MI ACCESO EN WHATSAPP/);
+  assert.match(
+    thankYouSource,
+    /Tu acceso a la clase se completa al entrar al grupo de WhatsApp/,
+  );
   assert.doesNotMatch(thankYouSource, /CompleteRegistration|track\s*\(/);
 });
 

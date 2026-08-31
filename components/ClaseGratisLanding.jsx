@@ -572,12 +572,19 @@ export default function ClaseGratisLanding({ country }) {
               </h3>
               <div className="mb-6 flex flex-col items-center gap-2 text-sm text-neutral-400 sm:mb-8 sm:text-base">
                 <EventTimes schedule={schedule} detailed />
-                <span>Regístrate para recibir el acceso y los recordatorios.</span>
+                <span>
+                  Reserva tu lugar gratis. Después de registrarte, te llevaremos
+                  al grupo privado de WhatsApp. Entra al grupo para completar tu
+                  acceso a la clase.
+                </span>
               </div>
 
               <div className="text-left">
                 <ActiveCampaignForm country={country} />
               </div>
+              <p className="mt-4 text-center text-xs font-semibold text-white/65 sm:text-sm">
+                Registro gratuito · El acceso se completa por WhatsApp
+              </p>
             </div>
           </div>
         </div>
