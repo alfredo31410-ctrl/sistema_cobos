@@ -121,7 +121,11 @@ export default function ClaseGratisThankYouPage({
               href={country.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex min-h-[64px] w-full items-center justify-center gap-2 rounded-xl border border-[#54E58A] bg-[#25D366] px-4 py-4 text-center text-sm font-black uppercase leading-tight text-[#071D24] shadow-[0_18px_52px_-16px_rgba(37,211,102,0.9)] transition-[background-color,box-shadow,transform] duration-150 hover:-translate-y-0.5 hover:bg-[#20C65A] hover:shadow-[0_20px_58px_-16px_rgba(37,211,102,0.95)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-emerald-200/80 focus-visible:ring-offset-4 focus-visible:ring-offset-[#07152f] active:scale-[0.99] sm:text-base"
+              style={{
+                backgroundColor: "#25D366",
+                color: "#071D24",
+              }}
+              className="mt-6 inline-flex min-h-[64px] w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-center text-base font-extrabold uppercase leading-tight shadow-[0_0_30px_rgba(37,211,102,0.25)] transition-all duration-200 hover:brightness-95 hover:shadow-[0_0_38px_rgba(37,211,102,0.35)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/40 focus-visible:ring-offset-4 focus-visible:ring-offset-[#07152f] active:scale-[0.99]"
             >
               <MessageCircle className="h-6 w-6 shrink-0" aria-hidden="true" />
               <span>CONFIRMAR MI ACCESO EN WHATSAPP</span>
